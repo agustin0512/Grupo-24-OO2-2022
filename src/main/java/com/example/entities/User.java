@@ -35,6 +35,21 @@ public class User {
 	@Column(name="password", nullable=false, length=60)
 	private String password;
 	
+	@Column(name="mail", nullable=false, length=60)
+	private String mail;
+	
+	@Column(name="nombre", nullable=false, length=60)
+	private String nombre;
+	
+	@Column(name="apellido", nullable=false, length=60)
+	private String apellido;
+	
+	@Column(name="tipodoc", nullable=false, length=4)
+	private String tipodoc;
+	
+	@Column(name="dni", nullable=false)
+	private long dni;
+	
 	@Column(name="enabled")
 	private boolean enabled;
 	

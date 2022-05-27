@@ -15,7 +15,7 @@ public class DemoApplicationTests {
 	
 	private BCryptPasswordEncoder encoder;
 	
-@Test
+	@Test
 	public void UsuarioTest() {//creo usuario
 		Usuario u = new Usuario();
 		u.setId(1);
