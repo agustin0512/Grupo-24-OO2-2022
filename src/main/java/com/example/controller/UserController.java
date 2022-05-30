@@ -11,7 +11,7 @@ import com.example.helpers.ViewRouteHelper;
 @Controller
 public class UserController {
 
-	@GetMapping("/login")
+	/*@GetMapping("/login")
 	public String login(Model model,
 						@RequestParam(name="error",required=false) String error,
 						@RequestParam(name="logout", required=false) String logout) {
@@ -28,5 +28,5 @@ public class UserController {
 	@GetMapping("/loginsuccess")
 	public String loginCheck() {
 		return "redirect:/index";
-	}
+	}*/
 }

@@ -1,11 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-<meta charset="UTF-8"/>
-<title>index</title>
+	<meta charset="UTF-8"/>
+	<title>index</title>
 </head>
 <body>
-	Hola Mundo!<br>
-	Esta es una página de prueba
+	<p>Hola Mundo!<br>
+	Esta es una página de prueba</p>
+	
+	<hr />
+	<!-- Agregar usuario -->
+	<form th:action="@{/guardar}" method="post" th:object="${usuarioAgregar}">
+		<p> Nombre: <input type="text" th:field="*{nombre}" /></p>
+		<p> Apellido: <input type="text" th:field="*{apellido}" /></p>
+		<p> Mail: <input type="text" th:field="*{mail}" /></p>
+		<p> Tipo Documento: <input type="text" th:field="*{tipodoc}" /></p>
+		<p> Nro Documento: <input type="text" th:field="*{dni}" /></p>
+		<p> Usuario: <input type="text" th:field="*{username}" /></p>
+		<p> Contraseña: <input type="password" th:field="*{password}" /></p>
+	<input type="submit"/>
+	</form>
+	
+	<hr />
+	
+	<table border="1">
+		<tr>
+			<td>Nombre</td>
+			<td>Apellido</td>
+			<td>Email</td>
+			<td>Tipo Documento</td>
+			<td>Nro Documento</td>
+		</tr>
+		<tr th:each="usuario : ${usuarios}">
+			<td th:text="${usuario.nombre}"></td>
+			<td th:text="${usuario.apellido}"></td>
+			<td th:text="${usuario.mail}"></td>
+			<td th:text="${usuario.tipodoc}"></td>
+			<td th:text="${usuario.dni}"></td>
+		</tr>
+	</table>
 <body>
 </html>

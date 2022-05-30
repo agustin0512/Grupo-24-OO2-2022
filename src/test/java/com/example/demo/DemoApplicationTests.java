@@ -6,14 +6,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.example.model.Usuario;
-import com.example.repo.IUsuarioRepo;
+import com.example.repo.IUserRepository;
 
 @SpringBootTest
 public class DemoApplicationTests {
 
-	private IUsuarioRepo repo;
+	private IUserRepository repo;
 	
-	private BCryptPasswordEncoder encoder;
+	private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 	
 	@Test
 	public void UsuarioTest() {//creo usuario
