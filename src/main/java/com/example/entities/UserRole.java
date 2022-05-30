@@ -44,4 +44,12 @@ public class UserRole {
 	@UpdateTimestamp
 	private LocalDateTime updatedAt;
 
+	@Override
+	public String toString() {
+		return "UserRole [id=" + id + ", user=" + user + ", role=" + role + ", createdAt=" + createdAt + ", updatedAt="
+				+ updatedAt + "]";
+	}
+
+	
+	
 }
