@@ -23,15 +23,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(userService).passwordEncoder(new BCryptPasswordEncoder());
-		/*auth.inMemoryAuthentication()
+		//auth.userDetailsService(userService).passwordEncoder(new BCryptPasswordEncoder());
+		auth.inMemoryAuthentication()
 			.withUser("adminnn")
 				.password("{noop}4444")
 				.roles("ADMIN","USER")
-		;*/
+		;
 	}
 	
-	/*@Override
+	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
 				.antMatchers("/css/*", "/imgs/*", "/js/*", "/vendor/bootstrap/css/*", "/vendor/jquery/*", "/vendor/bootstrap/js/*").permitAll()
@@ -42,5 +42,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.defaultSuccessUrl("/loginsuccess").permitAll()
 			.and()
 				.logout().logoutUrl("/logout").logoutSuccessUrl("/logout").permitAll();
-	}*/
+	}
 }
