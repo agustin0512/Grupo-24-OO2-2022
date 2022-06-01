@@ -24,17 +24,24 @@ public class InicioCtrl {
 	@Autowired
 	private UserRoleService userRoleService;
 
+	/************* INICIO *************/
 	@GetMapping("/")
 	public String inicio(Model model) { // Importamos Model para compartir informacion con la vista
 		// Creamos los valores a compartir
 		List<User> usuarios = userService.traer();
 		// Mediante el metodo addAtribute de Model, enviamos los valores a compartir con la vista
-		model.addAttribute("usuarioAgregar", new User());
 		model.addAttribute("usuarios", usuarios);
-		return "index"; // Indica el nombre de la vista (plantilla html)
+		return "index"; // Indicamos la plantilla html a usar(index)
 	}
 	
-	@PostMapping("/guardar")
+	/************* AGREGAR USUARIO *************/
+	@GetMapping("/agregar")
+	public String agregar(Model model) {
+		model.addAttribute("usuario", new User());	// Instanciamos un User para cargar en el Form
+		return "formAgregar"; // Indicamos la plantilla html a usar (Form Agregar)
+	}
+	
+	@PostMapping("/agregar")
 	public String guardarUsuario(User userParam) {
 		// Creamos el Usuario
 		User user = new User();
@@ -55,9 +62,34 @@ public class InicioCtrl {
 		rol.setUpdatedAt(LocalDateTime.now());
 		rol.setUser(user);
 		user.getUserRoles().add(rol);
+		// Insertamos User y Roles en la BD
 		userService.guardar(user);
 		userRoleService.guardar(rol);
-		
+		// Redireccion a Inicio
 		return "redirect:/";
+	}
+	
+	/************* MODIFICAR USUARIO *************/
+	@GetMapping("/modificar/{id}")
+	public String modificar(User user, Model model) {
+		user = userService.traer(user.getId());	// Se obtiene el User a Modificar
+		model.addAttribute("usuario", user);	// Se comparte el User para el autocompletado del form
+		return "formModificar"; // Indicamos la plantilla html a usar (Form Modificar)
+	}
+	
+	@PostMapping("/modificar")
+	public String modificarUsuario(User user) {
+		user.setUpdatedAt(LocalDateTime.now());	// Solo se actualiza Fecha Update
+		userService.guardar(user);				// El resto de atributos se obtienen desde el form
+		return "redirect:/";
+	}
+	
+	/************* DESACTIVAR USUARIO *************/
+	@GetMapping("/desactivar/{id}")
+	public String desactivar(User user) {
+		user = userService.traer(user.getId());
+		user.setEnabled(!user.isEnabled());		// Solo se modifica el estado del User (enabled)
+		userService.guardar(user);
+		return "redirect:/"; // Redirecciona a Inicio
 	}
 }

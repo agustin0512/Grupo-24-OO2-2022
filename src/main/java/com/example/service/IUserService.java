@@ -6,6 +6,6 @@ import com.example.entities.User;
 
 public interface IUserService {
 	public List<User> traer();
-	public User traer(Long id);
+	public User traer(int id);
 	public void guardar(User user);
 }
