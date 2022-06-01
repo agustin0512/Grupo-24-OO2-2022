@@ -14,12 +14,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.entities.User;
 import com.example.entities.UserRole;
+import com.example.service.implementation.UserRoleService;
 import com.example.service.implementation.UserService;
 
 @Controller
 public class InicioCtrl {
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private UserRoleService userRoleService;
 
 	@GetMapping("/")
 	public String inicio(Model model) { // Importamos Model para compartir informacion con la vista
@@ -53,6 +56,8 @@ public class InicioCtrl {
 		rol.setUser(user);
 		user.getUserRoles().add(rol);
 		userService.guardar(user);
+		userRoleService.guardar(rol);
+		
 		return "redirect:/";
 	}
 }
