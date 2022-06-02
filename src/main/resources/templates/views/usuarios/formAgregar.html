@@ -10,7 +10,7 @@
 <body>
 
 	<!-- Agregar usuario -->
-	<form th:action="@{/agregar}" method="post" th:object="${usuario}">
+	<form th:action="@{/usuarios/agregar}" method="post" th:object="${usuario}">
 		<input type="hidden" th:field="*{id}" />
 		<p> Nombre: <input type="text" th:field="*{nombre}" /></p>
 		<p> Apellido: <input type="text" th:field="*{apellido}" /></p>
@@ -22,6 +22,6 @@
 		<input type="submit" value="Guardar"/>
 	</form>
 	<br />
-	<a th:href="@{/listar}"><button>Cancelar</button></a>
+	<a th:href="@{/usuarios/listar}"><button>Cancelar</button></a>
 </body>
 </html>

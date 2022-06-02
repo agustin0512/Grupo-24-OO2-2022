@@ -21,7 +21,7 @@ import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
 
-@Component("listar")
+@Component("/views/usuarios/listar")
 public class ListarUsuariosPdf extends AbstractPdfView {
 
 	@Override

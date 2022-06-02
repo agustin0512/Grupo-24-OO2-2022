@@ -13,8 +13,8 @@
 		<h1 th:text="${titulo}"></h1>
 	</div>
 	<div>
-	<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/agregar}"><button>Agregar Usuario</button></a>
-	<a th:href="@{/listar?format=pdf}" target=”_blank”><button>Descargar PDF</button></a>
+	<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/usuarios/agregar}"><button>Agregar Usuario</button></a>
+	<a th:href="@{/usuarios/listar?format=pdf}" target=”_blank”><button>Descargar PDF</button></a>
 	</div>
 	<table class="table">
 		<thead>
@@ -42,8 +42,8 @@
 				<td th:text="${usuario.tipodoc}"></td>
 				<td th:text="${usuario.dni}"></td>
 				<td th:text="${usuario.enabled ? 'Activo' : 'Inactivo'}"></td>
-				<td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/modificar/} + ${usuario.id}"><button>Modificar</button></a></td>
-				<td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/desactivar/} + ${usuario.id}"><button th:text="${usuario.enabled ? 'Desactivar' : 'Activar'}"></button></a></td>
+				<td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/usuarios/modificar/} + ${usuario.id}"><button>Modificar</button></a></td>
+				<td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/usuarios/desactivar/} + ${usuario.id}"><button th:text="${usuario.enabled ? 'Desactivar' : 'Activar'}"></button></a></td>
 
 			</tr>
 		</tbody>
