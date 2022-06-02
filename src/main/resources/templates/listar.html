@@ -12,7 +12,10 @@
 	<div class=container>
 		<h1 th:text="${titulo}"></h1>
 	</div>
+	<div>
 	<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/agregar}"><button>Agregar Usuario</button></a>
+	<a th:href="@{/listar?format=pdf}" target=”_blank”><button>Descargar PDF</button></a>
+	</div>
 	<table class="table">
 		<thead>
 			<tr>

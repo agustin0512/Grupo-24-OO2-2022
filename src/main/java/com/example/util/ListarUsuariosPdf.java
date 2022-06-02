@@ -21,7 +21,7 @@ import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
 
-@Component("/views/usuarios/listar")
+@Component("listar")
 public class ListarUsuariosPdf extends AbstractPdfView {
 
 	@Override
@@ -59,7 +59,6 @@ public class ListarUsuariosPdf extends AbstractPdfView {
 			tablaUsuarios.addCell(usuario.getUsername());
 			tablaUsuarios.addCell(usuario.getTipodoc());
 			tablaUsuarios.addCell(String.valueOf(usuario.getDni()));
-			tablaUsuarios.addCell(usuario.getUserRoles().toString());
 			
 
 		});
