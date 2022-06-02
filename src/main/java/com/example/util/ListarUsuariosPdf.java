@@ -28,12 +28,20 @@ public class ListarUsuariosPdf extends AbstractPdfView {
 	protected void buildPdfDocument(Map<String, Object> model, Document document, PdfWriter writer,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
+		com.lowagie.text.Font fuenteTitulo = FontFactory.getFont(FontFactory.HELVETICA_BOLD,20,Color.BLUE);
+		com.lowagie.text.Font fuenteTituloColumnas = FontFactory.getFont(FontFactory.HELVETICA_BOLD ,12,Color.BLUE);
+		com.lowagie.text.Font fuenteDataCeldas = FontFactory.getFont(FontFactory.COURIER ,10,Color.BLACK);
+		
+		
 		document.setPageSize(PageSize.LETTER.rotate());
+		document.setMargins(-20, -20, 30, 20);
 		document.open();
+		
+		/*Tabla Para El Titulo del PDF*/
 		PdfPTable tablaTitulo = new PdfPTable(1);
 		PdfPCell celda=null;
 		
-		com.lowagie.text.Font fuenteTitulo= FontFactory.getFont("Helvetica",16,Color.BLUE);
+		
 		
 		//Font fuenteTitulo = FontFactory.getFont("Helvetica",16,Color.BLUE);
 		
@@ -52,6 +60,53 @@ public class ListarUsuariosPdf extends AbstractPdfView {
 		PdfPTable tablaUsuarios = new PdfPTable(7);
 		@SuppressWarnings("unchecked")
 		List<User> usuarios = (List<User>) model.get("usuarios");
+		
+		
+		
+		celda = new PdfPCell(new Phrase("ID", fuenteTituloColumnas));
+		celda.setBackgroundColor(Color.lightGray);
+		celda.setHorizontalAlignment(Element.ALIGN_CENTER);
+		celda.setVerticalAlignment(Element.ALIGN_CENTER);
+		celda.setPadding(10);
+		tablaTitulo.addCell(celda);
+		
+		celda = new PdfPCell(new Phrase("NOMBRES", fuenteTituloColumnas));
+		celda.setBackgroundColor(Color.lightGray);
+		celda.setHorizontalAlignment(Element.ALIGN_CENTER);
+		celda.setVerticalAlignment(Element.ALIGN_CENTER);
+		celda.setPadding(10);
+		tablaTitulo.addCell(celda);
+		
+		celda = new PdfPCell(new Phrase("APELLIDOS", fuenteTituloColumnas));
+		celda.setBackgroundColor(Color.lightGray);
+		celda.setHorizontalAlignment(Element.ALIGN_CENTER);
+		celda.setVerticalAlignment(Element.ALIGN_CENTER);
+		celda.setPadding(10);
+		tablaTitulo.addCell(celda);
+		
+		celda = new PdfPCell(new Phrase("TELEFONO", fuenteTituloColumnas));
+		celda.setBackgroundColor(Color.lightGray);
+		celda.setHorizontalAlignment(Element.ALIGN_CENTER);
+		celda.setVerticalAlignment(Element.ALIGN_CENTER);
+		celda.setPadding(10);
+		tablaTitulo.addCell(celda);
+		
+		celda = new PdfPCell(new Phrase("EMAIL", fuenteTituloColumnas));
+		celda.setBackgroundColor(Color.lightGray);
+		celda.setHorizontalAlignment(Element.ALIGN_CENTER);
+		celda.setVerticalAlignment(Element.ALIGN_CENTER);
+		celda.setPadding(10);
+		tablaTitulo.addCell(celda);
+		
+		celda = new PdfPCell(new Phrase("CIUDAD", fuenteTituloColumnas));
+		celda.setBackgroundColor(Color.lightGray);
+		celda.setHorizontalAlignment(Element.ALIGN_CENTER);
+		celda.setVerticalAlignment(Element.ALIGN_CENTER);
+		celda.setPadding(10);
+		tablaTitulo.addCell(celda);		
+		
+		
+		
 		usuarios.forEach(usuario ->{
 			tablaUsuarios.addCell(usuario.getNombre());
 			tablaUsuarios.addCell(usuario.getApellido());
