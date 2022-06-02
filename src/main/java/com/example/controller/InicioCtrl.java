@@ -6,6 +6,7 @@ import java.util.List;
 //import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,12 +40,14 @@ public class InicioCtrl {
 	}
 	
 	/************* AGREGAR USUARIO *************/
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping("/usuarios/agregar")
 	public String agregar(Model model) {
 		model.addAttribute("usuario", new User());	// Instanciamos un User para cargar en el Form
 		return "/views/usuarios/formAgregar"; // Indicamos la plantilla html a usar (Form Agregar)
 	}
 	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@PostMapping("/usuarios/agregar")
 	public String guardarUsuario(User userParam) {
 		// Creamos el Usuario
@@ -74,6 +77,7 @@ public class InicioCtrl {
 	}
 	
 	/************* MODIFICAR USUARIO *************/
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping("/usuarios/modificar/{id}")
 	public String modificar(User user, Model model) {
 		user = userService.traer(user.getId());	// Se obtiene el User a Modificar
@@ -81,6 +85,7 @@ public class InicioCtrl {
 		return "/views/usuarios/formModificar"; // Indicamos la plantilla html a usar (Form Modificar)
 	}
 	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@PostMapping("/usuarios/modificar")
 	public String modificarUsuario(User user) {
 		user.setUpdatedAt(LocalDateTime.now());	// Solo se actualiza Fecha Update
@@ -89,6 +94,7 @@ public class InicioCtrl {
 	}
 	
 	/************* DESACTIVAR USUARIO *************/
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping("/usuarios/desactivar/{id}")
 	public String desactivar(User user) {
 		user = userService.traer(user.getId());

@@ -57,6 +57,38 @@ public class ListarUsuariosPdf extends AbstractPdfView {
 		tablaTitulo.addCell(celda);
 		tablaTitulo.setSpacingAfter(30);
 		
+		PdfPCell cell = new PdfPCell();
+		PdfPTable tablaPColumna = new PdfPTable(7);
+        cell.setBackgroundColor(Color.WHITE);
+        cell.setPadding(5);
+         
+        com.lowagie.text.Font fuenteColumnas = FontFactory.getFont(FontFactory.HELVETICA);
+        fuenteColumnas.setColor(Color.BLACK);
+        fuenteColumnas.setStyle(Font.BOLD);
+        fuenteColumnas.setStyle(Font.CENTER_BASELINE);
+         
+        cell.setPhrase(new Phrase("Nombre", fuenteColumnas));
+        tablaPColumna.addCell(cell);
+        
+        cell.setPhrase(new Phrase("Apellido", fuenteColumnas));
+        tablaPColumna.addCell(cell);
+         
+        cell.setPhrase(new Phrase("Email", fuenteColumnas));
+        tablaPColumna.addCell(cell);
+        
+        cell.setPhrase(new Phrase("Usuario", fuenteColumnas));
+        tablaPColumna.addCell(cell);
+         
+        cell.setPhrase(new Phrase("Tipo doc", fuenteColumnas));
+        tablaPColumna.addCell(cell);
+        
+        cell.setPhrase(new Phrase("Numero", fuenteColumnas));
+        tablaPColumna.addCell(cell);
+        
+        cell.setPhrase(new Phrase("Roles", fuenteColumnas));
+        tablaPColumna.addCell(cell);
+
+		
 		PdfPTable tablaUsuarios = new PdfPTable(7);
 		@SuppressWarnings("unchecked")
 		List<User> usuarios = (List<User>) model.get("usuarios");
@@ -118,6 +150,7 @@ public class ListarUsuariosPdf extends AbstractPdfView {
 
 		});
 		document.add(tablaTitulo);
+		document.add(tablaPColumna);
 		document.add(tablaUsuarios);
 		
 		
