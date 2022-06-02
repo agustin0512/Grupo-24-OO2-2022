@@ -1,4 +1,4 @@
-package com.example.model;
+/*package com.example.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -30,4 +30,4 @@ public class Usuario {
 	}
 	
 	
-}
+}*/

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+	<meta charset="UTF-8"/>
+	<title>Agregar Usuario</title>
+</head>
+<body>
+
+	<!-- Agregar usuario -->
+	<form th:action="@{/agregar}" method="post" th:object="${usuario}">
+		<input type="hidden" th:field="*{id}" />
+		<p> Nombre: <input type="text" th:field="*{nombre}" /></p>
+		<p> Apellido: <input type="text" th:field="*{apellido}" /></p>
+		<p> Mail: <input type="text" th:field="*{mail}" /></p>
+		<p> Tipo Documento: <input type="text" th:field="*{tipodoc}" /></p>
+		<p> Nro Documento: <input type="text" th:field="*{dni}" /></p>
+		<p> Usuario: <input type="text" th:field="*{username}" /></p>
+		<p> Contraseña: <input type="password" th:field="*{password}" /></p>
+		<input type="submit" value="Guardar"/>
+	</form>
+	<br />
+	<a th:href="@{/listar}"><button>Cancelar</button></a>
+</body>
+</html>

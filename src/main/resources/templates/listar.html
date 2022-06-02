@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="plantilla/template :: head">
+
+</head>
+<body>
+	<header th:replace="plantilla/template :: header"></header>
+
+	<div class=container>
+		<h1 th:text="${titulo}"></h1>
+	</div>
+	<a th:href="@{/agregar}"><button>Agregar Usuario</button></a>
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">id</th>
+				<th scope="col">username</th>
+				<!-- <th scope="col">password</th> -->
+				<th scope="col">Email</th>
+				<th scope="col">Nombre</th>
+				<th scope="col">Apellido</th>
+				<th scope="col">Tipo Documento</th>
+				<th scope="col">Nro Documento</th>
+				<th scope="col">Estado</th>
+			</tr>
+
+		</thead>
+		<tbody>
+			<tr th:each="usuario: ${usuarios}">
+				<th scope="row" th:text="${usuario.id}"></th>
+				<td th:text="${usuario.username}"></td>
+				<!-- <td th:text="${usuario.password}"></td> -->
+				<td th:text="${usuario.mail}"></td>
+				<td th:text="${usuario.nombre}"></td>
+				<td th:text="${usuario.apellido}"></td>
+				<td th:text="${usuario.tipodoc}"></td>
+				<td th:text="${usuario.dni}"></td>
+				<td th:text="${usuario.enabled ? 'Activo' : 'Inactivo'}"></td>
+				<td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/modificar/} + ${usuario.id}"><button>Modificar</button></a></td>
+				<td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/desactivar/} + ${usuario.id}"><button th:text="${usuario.enabled ? 'Desactivar' : 'Activar'}"></button></a></td>
+
+			</tr>
+		</tbody>
+	</table>
+	
+	<footer th:replace="plantilla/template  :: footer"></footer>
+</body>
+
+</html>

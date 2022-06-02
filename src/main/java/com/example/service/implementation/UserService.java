@@ -54,7 +54,7 @@ public class UserService implements UserDetailsService, IUserService{
 
 	@Override
 	@Transactional( readOnly = true )
-	public com.example.entities.User traer(Long id) {
+	public com.example.entities.User traer(int id) {
 		return repo.findById(id).orElse(null);
 	}
 

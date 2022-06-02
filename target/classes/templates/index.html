@@ -6,22 +6,12 @@
 <head	th:replace="plantilla/template :: head">
 	
 	<meta charset="UTF-8"/>
-	<title>index</title>
+	<title>UNLa</title>
 </head>
 <body>
-	
 	<header th:replace= "plantilla/template :: header"></header>
-	<!-- Agregar usuario -->
-	<form th:action="@{/guardar}" method="post" th:object="${usuarioAgregar}">
-		<p> Nombre: <input type="text" th:field="*{nombre}" /></p>
-		<p> Apellido: <input type="text" th:field="*{apellido}" /></p>
-		<p> Mail: <input type="text" th:field="*{mail}" /></p>
-		<p> Tipo Documento: <input type="text" th:field="*{tipodoc}" /></p>
-		<p> Nro Documento: <input type="text" th:field="*{dni}" /></p>
-		<p> Usuario: <input type="text" th:field="*{username}" /></p>
-		<p> Contraseña: <input type="password" th:field="*{password}" /></p>
-	<input type="submit"/>
-	</form>
+
+	<a th:href="@{/listar}"><button>Ver Lista de usuarios</button></a>
 	
 	<footer th:replace= "plantilla/template  :: footer"></footer>
 <body>
