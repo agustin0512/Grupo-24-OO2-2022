@@ -3,15 +3,14 @@
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head>
+<head	th:replace="plantilla/template :: head">
+	
 	<meta charset="UTF-8"/>
 	<title>index</title>
 </head>
 <body>
-	<p>Hola Mundo!<br>
-	Esta es una página de prueba</p>
 	
-	<hr />
+	<header th:replace= "plantilla/template :: header"></header>
 	<!-- Agregar usuario -->
 	<form th:action="@{/guardar}" method="post" th:object="${usuarioAgregar}">
 		<p> Nombre: <input type="text" th:field="*{nombre}" /></p>
@@ -24,24 +23,6 @@
 	<input type="submit"/>
 	</form>
 	
-	<hr />
-	
-	<table border="1">
-		<tr>
-			<td>Nombre</td>
-			<td>Apellido</td>
-			<td>Email</td>
-			<td>Tipo Documento</td>
-			<td>Nro Documento</td>
-		</tr>
-		<tr th:each="usuario : ${usuarios}">
-			<td th:text="${usuario.nombre}"></td>
-			<td th:text="${usuario.apellido}"></td>
-			<td th:text="${usuario.mail}"></td>
-			<td th:text="${usuario.tipodoc}"></td>
-			<td th:text="${usuario.dni}"></td>
-		</tr>
-	</table>
-	<a th:href="/@{/export}">Exportar PDF</a>
+	<footer th:replace= "plantilla/template  :: footer"></footer>
 <body>
 </html>

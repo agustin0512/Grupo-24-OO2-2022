@@ -20,6 +20,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+
+
 @Entity
 @Table(name="user")
 @Getter @Setter @NoArgsConstructor
@@ -29,25 +31,25 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(name="username", unique=true, nullable=false, length=45)
+	@Column(name="username", unique=true,  length=45)
 	private String username;
 	
-	@Column(name="password", nullable=false, length=60)
+	@Column(name="password", length=60)
 	private String password;
 	
-	@Column(name="mail", nullable=false, length=60)
+	@Column(name="mail", length=60)
 	private String mail;
 	
-	@Column(name="nombre", nullable=false, length=60)
+	@Column(name="nombre",  length=60)
 	private String nombre;
 	
-	@Column(name="apellido", nullable=false, length=60)
+	@Column(name="apellido", length=60)
 	private String apellido;
 	
-	@Column(name="tipodoc", nullable=false, length=4)
+	@Column(name="tipodoc",  length=4)
 	private String tipodoc;
 	
-	@Column(name="dni", nullable=false)
+	@Column(name="dni",unique=true)
 	private long dni;
 	
 	@Column(name="enabled")
@@ -76,6 +78,13 @@ public class User {
 		this.enabled = enabled;
 		this.userRoles = userRoles;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", mail=" + mail + ", nombre="
+				+ nombre + ", apellido=" + apellido + ", tipodoc=" + tipodoc + ", dni=" + dni + ", userRoles="
+				+ userRoles + "]";
+	}
+
 	
 }

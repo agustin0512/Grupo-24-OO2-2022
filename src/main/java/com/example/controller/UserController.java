@@ -1,6 +1,6 @@
 package com.example.controller;
 
-import java.io.IOException;
+
 import java.util.Date;
 import java.util.List;
 import java.text.DateFormat;
@@ -18,14 +18,14 @@ import com.example.entities.User;
 import com.example.helpers.ViewRouteHelper;
 import com.example.service.UserPdfExporter;
 import com.example.service.implementation.UserService;
-import com.lowagie.text.DocumentException;
+
 
 
 @Controller
 public class UserController {
 
 	 @Autowired
-	    private UserService service;
+	private UserService service;
 	
 	@GetMapping("/login")
 	public String login(Model model,
@@ -45,7 +45,7 @@ public class UserController {
 	public String loginCheck() {
 		return "redirect:/index";
 	}
-	
+	/*
 	 @GetMapping("/export")
 	    public void exportToPDF(HttpServletResponse response) throws DocumentException, IOException {
 	        response.setContentType("application/pdf");
@@ -60,6 +60,6 @@ public class UserController {
 	         
 	        UserPdfExporter exporter = new UserPdfExporter(listUsers);
 	        exporter.export(response);
-	         
-	    }
+	      */   
+	    
 }

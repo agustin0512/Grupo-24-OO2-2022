@@ -11,12 +11,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.entities.User;
 import com.example.entities.UserRole;
 import com.example.service.implementation.UserService;
 
 @Controller
+@RequestMapping("/views/usuarios")
 public class InicioCtrl {
 	@Autowired
 	private UserService userService;
@@ -25,12 +27,15 @@ public class InicioCtrl {
 	public String inicio(Model model) { // Importamos Model para compartir informacion con la vista
 		// Creamos los valores a compartir
 		List<User> usuarios = userService.traer();
+		model.addAttribute("titulo", "Listado de clientes");
+	
 		// Mediante el metodo addAtribute de Model, enviamos los valores a compartir con la vista
-		model.addAttribute("usuarioAgregar", new User());
+		//model.addAttribute("usuarioAgregar", new User());
 		model.addAttribute("usuarios", usuarios);
-		return "index"; // Indica el nombre de la vista (plantilla html)
+		return "/views/usuarios/listar"; // Indica el nombre de la vista (plantilla html)
 	}
 	
+
 	@PostMapping("/guardar")
 	public String guardarUsuario(User userParam) {
 		// Creamos el Usuario
@@ -53,6 +58,6 @@ public class InicioCtrl {
 		rol.setUser(user);
 		user.getUserRoles().add(rol);
 		userService.guardar(user);
-		return "redirect:/";
-	}
-}
+		return "redirect:/index";
+	}}
+

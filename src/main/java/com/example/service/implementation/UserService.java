@@ -64,4 +64,13 @@ public class UserService implements UserDetailsService, IUserService{
 		repo.save(usuario);
 	}
 
+	public boolean remove(int id) {
+		try {
+			repo.deleteById(id);
+			return true;
+		}catch (Exception e) {
+			return false;
+		}
+	}
+
 }

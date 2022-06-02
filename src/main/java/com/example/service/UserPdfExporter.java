@@ -7,8 +7,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 
 import com.example.entities.User;
-import com.lowagie.text.*;
-import com.lowagie.text.pdf.*;
+
 
 public class UserPdfExporter {
 	private List<User> listUsers;
@@ -17,7 +16,7 @@ public class UserPdfExporter {
     public UserPdfExporter(List<User> listUsers) {
         this.listUsers = listUsers;
     }
-    
+    /*
     private void writeTableHeader(PdfPTable table) {
         PdfPCell cell = new PdfPCell();
         cell.setBackgroundColor(Color.BLUE);
@@ -92,6 +91,6 @@ public class UserPdfExporter {
         document.add(table);
          
         document.close();
-         
+     */    
     }
-}
+
