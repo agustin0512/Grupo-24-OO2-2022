@@ -13,7 +13,7 @@
 	
 	<hr />
 	
-	<a th:href="@{/agregar}"><button>Agregar Usuario</button></a>
+	<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/agregar}"><button>Agregar Usuario</button></a>
 	
 	<table border="1">
 		<tr>
@@ -31,8 +31,8 @@
 			<td th:text="${usuario.tipodoc}"></td>
 			<td th:text="${usuario.dni}"></td>
 			<td th:text="${usuario.enabled ? 'Activo' : 'Inactivo'}"></td>
-			<td><a th:href="@{/modificar/} + ${usuario.id}"><button>Modificar</button></a></td>
-			<td><a th:href="@{/desactivar/} + ${usuario.id}"><button th:text="${usuario.enabled ? 'Desactivar' : 'Activar'}"></button></a></td>
+			<td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/modificar/} + ${usuario.id}"><button>Modificar</button></a></td>
+			<td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/desactivar/} + ${usuario.id}"><button th:text="${usuario.enabled ? 'Desactivar' : 'Activar'}"></button></a></td>
 		</tr>
 	</table>
 	<!-- <a th:href="/@{/export}">Exportar PDF</a> -->
