@@ -30,7 +30,7 @@ public class UserService implements UserDetailsService, IUserService{
 	@Override
 	@Transactional(readOnly=true)
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		com.example.entities.User user = repo.findByUsername(username);
+		com.example.entities.User user = repo.findByUsernameAndFetchUserRolesEagerly(username);
 		return buildUser(user, buildGrantedAuthorities(user.getUserRoles()));
 	}
 	

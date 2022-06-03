@@ -68,7 +68,7 @@ public class InicioCtrl {
 		rol.setCreatedAt(LocalDateTime.now());
 		rol.setUpdatedAt(LocalDateTime.now());
 		rol.setUser(user);
-		user.getUserRoles().add(rol);
+	
 		// Insertamos User y Roles en la BD
 		userService.guardar(user);
 		userRoleService.guardar(rol);
