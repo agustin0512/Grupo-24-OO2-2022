@@ -1,9 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:fragment="head">
 <meta charset="UTF-8">
 <title> CRUDD Usuarios</title>
 <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
 </head>
 <body>
 	<!--  BARRA DE NAVEGACCION -->
@@ -29,18 +32,17 @@
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 							role="button" data-bs-toggle="dropdown" aria-expanded="false">
-								Dropdown </a>
+								<span sec:authentication="name"></span>
+							</a>
 								
 						
 							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<li><a class="dropdown-item" href="#">Action</a></li>
-								<li><a class="dropdown-item" href="#">Another action</a></li>
-								<li><hr class="dropdown-divider"></li>
-								<li><a class="dropdown-item" href="#">Something else
-										here</a></li>
-							</ul></li>
-						<li class="nav-item"><a class="nav-link disabled">Disabled</a>
-						</li>
+								<form th:action="@{logout}" method="post">
+									<button type="submit">Cerrar Sesion</button>
+								</form>
+								</ul>
+							</li>
+						
 					</ul>
 					<form class="d-flex" role="search">
 						<input class="form-control me-2" type="search"
