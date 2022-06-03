@@ -1,7 +1,6 @@
 package com.example.util;
 
 import java.awt.Color;
-import java.awt.Font;
 import java.util.List;
 import java.util.Map;
 
@@ -118,7 +117,7 @@ public class ListarUsuariosPdf extends AbstractPdfView {
 		
 		//CARGAMOS LOS DATOS EN LA TABLA
 		for (User usuario : usuarios) {
-			celda = new PdfPCell(new Phrase(String.valueOf(usuario.getDni()), fuenteDataCeldas));
+			celda = new PdfPCell(new Phrase(String.valueOf(usuario.getId()), fuenteDataCeldas));
 			celda.setHorizontalAlignment(Element.ALIGN_CENTER);
 			celda.setVerticalAlignment(Element.ALIGN_CENTER);
 			celda.setPadding(5);
@@ -160,6 +159,7 @@ public class ListarUsuariosPdf extends AbstractPdfView {
 			celda.setPadding(5);
 			tablaUsuarios.addCell(celda);
 			
+
 			celda = new PdfPCell(new Phrase(usuario.getUserRoles().toString(), fuenteDataCeldas));
 			celda.setHorizontalAlignment(Element.ALIGN_CENTER);
 			celda.setVerticalAlignment(Element.ALIGN_CENTER);
