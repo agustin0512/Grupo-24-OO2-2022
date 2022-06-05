@@ -12,7 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.entities.User;
 import com.example.entities.UserRole;
@@ -68,7 +67,7 @@ public class InicioCtrl {
 		rol.setCreatedAt(LocalDateTime.now());
 		rol.setUpdatedAt(LocalDateTime.now());
 		rol.setUser(user);
-		user.getUserRoles().add(rol);
+	
 		// Insertamos User y Roles en la BD
 		userService.guardar(user);
 		userRoleService.guardar(rol);

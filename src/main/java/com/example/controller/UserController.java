@@ -1,33 +1,17 @@
 package com.example.controller;
 
 
-import java.util.Date;
-import java.util.List;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-
-import javax.servlet.http.HttpServletResponse;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.example.entities.User;
 import com.example.helpers.ViewRouteHelper;
-import com.example.service.UserPdfExporter;
-import com.example.service.implementation.UserService;
-
-
 
 @Controller
 public class UserController {
 
-	 @Autowired
-	private UserService service;
-	
-	@GetMapping("/login")
+	 @GetMapping("/login")
 	public String login(Model model,
 						@RequestParam(name="error",required=false) String error,
 						@RequestParam(name="logout", required=false) String logout) {
