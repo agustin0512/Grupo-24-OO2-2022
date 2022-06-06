@@ -22,7 +22,7 @@ public class DemoApplicationTests {
 
 	private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-	@Test
+	/*@Test
 	public void UsuarioTest() {
 
 		// Creamos el Usuario
@@ -58,4 +58,5 @@ public class DemoApplicationTests {
 		userRoleService.guardar(rolAdmin);
 		userRoleService.guardar(rolUser);
 	}
+	*/
 }

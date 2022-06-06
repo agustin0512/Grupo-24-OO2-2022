@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="plantilla/template :: head">
+
+</head>
+<body>
+	<header th:replace="plantilla/template :: header"></header>
+
+	<div class=container>
+		<h1 th:text="${titulo}"></h1>
+	</div>
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">Id</th>
+				<th scope="col">Fecha</th>
+				<th scope="col">Turno</th>
+				<th scope="col">Libre</th>
+			</tr>
+
+		</thead>
+		<tbody>
+			<tr th:each="espacio: ${espacios}">
+				<th scope="row" th:text="${espacio.id}"></th>
+				<td th:text="${espacio.fecha}"></td>
+				<td th:text="${espacio.turno}"></td>
+				<td th:text="${espacio.libre}"></td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<footer th:replace="plantilla/template  :: footer"></footer>
+</body>
+
+</html>

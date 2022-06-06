@@ -14,8 +14,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.example.entities.Espacio;
 import com.example.entities.User;
 import com.example.entities.UserRole;
+import com.example.service.implementation.EspacioService;
 import com.example.service.implementation.UserRoleService;
 import com.example.service.implementation.UserService;
 
@@ -26,6 +28,8 @@ public class InicioCtrl {
 	private UserService userService;
 	@Autowired
 	private UserRoleService userRoleService;
+	@Autowired
+	private EspacioService espacioService;
 
 	/************* INICIO *************/
 	@GetMapping("/usuarios/listar")
@@ -104,5 +108,17 @@ public class InicioCtrl {
 		user.setEnabled(!user.isEnabled());		// Solo se modifica el estado del User (enabled)
 		userService.guardar(user);
 		return "redirect:/usuarios/listar"; // Redirecciona a Inicio
+	}
+	
+	/************* LISTAR ESPACIOS *************/
+	@GetMapping("/espacios/listar")
+	public String listarEspacios(Model model) { // Importamos Model para compartir informacion con la vista
+		// Creamos los valores a compartir
+		List<Espacio> espacios = espacioService.traer();
+		model.addAttribute("titulo", "Espacios");
+	
+		// Mediante el metodo addAtribute de Model, enviamos los valores a compartir con la vista
+		model.addAttribute("espacios", espacios);
+		return "/views/espacios/listar"; // Indicamos la plantilla html a usar(index)
 	}
 }

@@ -12,7 +12,7 @@
 	<header th:replace= "plantilla/template :: header"></header>
 
 	<a th:href="@{/usuarios/listar}" sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_AUDIT')"><button>Ver Lista de usuarios</button></a>
-	
+	<a th:href="@{/espacios/listar}"> <button>Ver Lista de espacios</button></a>
 	<footer th:replace= "plantilla/template  :: footer"></footer>
 <body>
 </html>
