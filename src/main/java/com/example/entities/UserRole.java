@@ -25,6 +25,7 @@ import lombok.Setter;
 @Table(name="user_role", uniqueConstraints=@UniqueConstraint(columnNames= {"role", "user_id"}))
 public class UserRole {
 
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -44,6 +45,7 @@ public class UserRole {
 	@UpdateTimestamp
 	private LocalDateTime updatedAt;
 
+	
 	@Override
 	public String toString() {
 		return role;

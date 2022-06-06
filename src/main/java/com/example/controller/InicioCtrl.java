@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 //import java.util.HashSet;
 import java.util.List;
 //import java.util.Set;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -42,7 +43,10 @@ public class InicioCtrl {
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping("/usuarios/agregar")
 	public String agregar(Model model) {
-		model.addAttribute("usuario", new User());	// Instanciamos un User para cargar en el Form
+		List<UserRole> userRoles=userRoleService.traer();
+		User user= new User();
+		model.addAttribute("usuario", user);// Instanciamos un User para cargar en el Form
+		model.addAttribute("roles", userRoles);
 		return "/views/usuarios/formAgregar"; // Indicamos la plantilla html a usar (Form Agregar)
 	}
 	
@@ -68,9 +72,9 @@ public class InicioCtrl {
 		rol.setUpdatedAt(LocalDateTime.now());
 		rol.setUser(user);
 	
+		user.getUserRoles().add(rol);
 		// Insertamos User y Roles en la BD
 		userService.guardar(user);
-		userRoleService.guardar(rol);
 		// Redireccion a Inicio
 		return "redirect:/usuarios/listar";
 	}

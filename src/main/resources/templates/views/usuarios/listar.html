@@ -14,9 +14,9 @@
 	</div>
 	<div>
 	<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/usuarios/agregar}"><button>Agregar Usuario</button></a>
-	<a th:href="@{/usuarios/listar?format=pdf}" target=”_blank”><button>Descargar PDF</button></a>
+	<a  th:href="@{/usuarios/listar?format=pdf}" target=”_blank”><button>Descargar PDF</button></a>
 	</div>
-	<table class="table">
+	<table class="table table-primary table-striped">
 		<thead>
 			<tr>
 				<th scope="col">id</th>

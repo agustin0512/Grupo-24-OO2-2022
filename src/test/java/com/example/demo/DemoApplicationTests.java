@@ -52,6 +52,7 @@ public class DemoApplicationTests {
 		user.getUserRoles().add(rolUser);
 		user.getUserRoles().add(rolAdmin);
 		
+		
 		// Guardamos User y sus Roles en la BD
 		userService.guardar(user);
 		userRoleService.guardar(rolAdmin);
