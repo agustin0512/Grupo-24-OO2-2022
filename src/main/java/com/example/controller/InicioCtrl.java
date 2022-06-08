@@ -34,7 +34,8 @@ public class InicioCtrl {
 	private UserRoleService userRoleService;
 	@Autowired
 	private EspacioService espacioService;
-
+	
+	private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 	/************* INICIO *************/
 	@GetMapping("/usuarios/listar")
 	public String inicio(Model model) { // Importamos Model para compartir informacion con la vista
@@ -66,8 +67,10 @@ public class InicioCtrl {
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@PostMapping("/usuarios/agregar")
 	public String guardarUsuario(@ModelAttribute User user) {
-		System.out.println("ID             "+user.getRol().getIdRol());
-		System.out.println("ROL               "+user.getRol().getRole());
+		user.setEnabled(true);
+		String password=encoder.encode(user.getPassword());
+		user.setPassword(password);
+		
 		userService.guardar(user);									
 		System.out.println("Cliente guardado con exito!");
 		return "redirect:/usuarios/listar";

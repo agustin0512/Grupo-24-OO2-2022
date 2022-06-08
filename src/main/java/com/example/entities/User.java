@@ -70,6 +70,8 @@ public class User {
 	@JoinColumn(name="id_rol")
 	private UserRole rol;
 	
+	
+	
 	public User(String username, String password, boolean enabled) {
 		this.username = username;
 		this.password = password;

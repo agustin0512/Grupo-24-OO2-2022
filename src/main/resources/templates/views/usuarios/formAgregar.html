@@ -72,7 +72,7 @@
 				
 			<div class="form-group row">
 				<label class="col-md-2" >Rol:</label> 
-				<select th:field="*{id}" class="form-control form-control-sm col-md-6"> 
+				<select th:field="*{rol.idRol}" class="form-control form-control-sm col-md-6"> 
 					<option th:each="rol:${roles}" th:value="${rol.idRol}" th:text="${rol.role}"
 					/>
 				
