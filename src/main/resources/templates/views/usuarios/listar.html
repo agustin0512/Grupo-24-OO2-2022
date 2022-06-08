@@ -30,6 +30,7 @@
 				<th scope="col">Tipo Documento</th>
 				<th scope="col">Nro Documento</th>
 				<th scope="col">Estado</th>
+				<th scope="col">Rol</th>
 			</tr>
 
 		</thead>
@@ -44,6 +45,7 @@
 				<td th:text="${usuario.tipodoc}"></td>
 				<td th:text="${usuario.dni}"></td>
 				<td th:text="${usuario.enabled ? 'Activo' : 'Inactivo'}"></td>
+				<td th:text="${usuario.rol.role}"></td>
 				<td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/usuarios/modificar/} + ${usuario.id}"><button>Modificar</button></a></td>
 				<td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/usuarios/desactivar/} + ${usuario.id}"><button th:text="${usuario.enabled ? 'Desactivar' : 'Activar'}"></button></a></td>
 
