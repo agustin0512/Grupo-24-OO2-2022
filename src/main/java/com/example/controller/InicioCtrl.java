@@ -36,7 +36,9 @@ public class InicioCtrl {
 	private EspacioService espacioService;
 	
 	private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+	
 	/************* INICIO *************/
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_AUDIT')")
 	@GetMapping("/usuarios/listar")
 	public String inicio(Model model) { // Importamos Model para compartir informacion con la vista
 		// Creamos los valores a compartir
