@@ -24,7 +24,7 @@ public class UserRoleService implements IUserRoleService{
 
 	@Override
 	@Transactional( readOnly = true )
-	public UserRole traer(Long id) {
+	public UserRole traer(int id) {
 		return repo.findById(id).orElse(null);
 	}
 
@@ -33,6 +33,12 @@ public class UserRoleService implements IUserRoleService{
 	public void guardar(UserRole userRole) {
 		repo.save(userRole);
 		
+	}
+
+	@Override
+	public UserRole traer(Long id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

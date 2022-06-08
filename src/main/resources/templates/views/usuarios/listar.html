@@ -12,10 +12,12 @@
 	<div class=container>
 		<h1 th:text="${titulo}"></h1>
 	</div>
-	<div>
-	<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/usuarios/agregar}"><button>Agregar Usuario</button></a>
-	<a  th:href="@{/usuarios/listar?format=pdf}" target=”_blank”><button>Descargar PDF</button></a>
-	</div>
+	
+	<div class=container>
+	
+	<a class="btn btn-primary btn-sm" sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/usuarios/agregar}" 
+	th:text="'Nuevo usuario'" title="Crear nuevo usuario"></a>
+	<a class="btn btn-info btn-sm" th:href="@{/usuarios/listar?format=pdf}" target=”_blank” th:text="'Descargar PDF'" title="Crear nuevo usuario"></a>
 	<table class="table table-primary table-striped">
 		<thead>
 			<tr>
@@ -48,7 +50,7 @@
 			</tr>
 		</tbody>
 	</table>
-	
+	</div>
 	<footer th:replace="plantilla/template  :: footer"></footer>
 </body>
 

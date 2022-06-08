@@ -8,4 +8,5 @@ public interface IUserRoleService {
 	public List<UserRole> traer();
 	public UserRole traer(Long id);
 	public void guardar(UserRole userRole);
+	UserRole traer(int id);
 }
