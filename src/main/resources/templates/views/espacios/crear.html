@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="plantilla/template :: head">
+
+</head>
+<body>
+<header th:replace="plantilla/template :: header"></header>
+
+	<div class=container>
+		<h1 th:text="${titulo}"></h1>
+	</div>
+<div class="formulario">
+	    <form action="#" th:action="@{/espacios/agregar}" method="post">
+	        <ul class="listaForm">
+	            <li class="fecha">
+<<<<<<< Updated upstream
+	                <label for="fechainicial"><b>Ingrese fecha inicio cuatrimestre:</b></label>
+	                <input class="inputFecha" type="date" name="fechainicio" id="fechainicio">
+	            </li>
+	            <li class="fecha">
+	                <label for="fechafinal"><b>Ingrese fecha fin cuatrimestre:</b></label>
+=======
+	                <label for="fecha_inicial"><b>Ingrese fecha inicio cuatrimestre:</b></label>
+	                <input class="inputFecha" type="date" name="fechainicio" id="fechainicio">
+	            </li>
+	            <li class="fecha">
+	                <label for="fecha_final"><b>Ingrese fecha fin cuatrimestre:</b></label>
+>>>>>>> Stashed changes
+	                <input class="inputFecha" type="date" name="fechafin" id="fechafin">
+	            </li>
+	            <li class="boton"><input type="submit" class="botonEnviar"></li>
+	        </ul>
+	    </form>
+    </div>
+
+    <div th:if="${espaciosAgregados}">
+        <p class="textoExito"><b>El espacio fue agregado correctamente</b></p>
+    </div>
+    
+    <footer th:replace="plantilla/template  :: footer"></footer>
+</body>
+
+</html>

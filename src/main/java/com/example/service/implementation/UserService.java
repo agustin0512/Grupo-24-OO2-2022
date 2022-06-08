@@ -23,10 +23,9 @@ import com.example.entities.UserRole;
 @Service("userDetailsService")
 public class UserService implements UserDetailsService, IUserService{
 	
-	//@Qualifier("userRepository")
+	
 	@Autowired
 	private IUserRepository repo;
-
 	@Override
 	@Transactional(readOnly=true)
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -43,14 +42,6 @@ public class UserService implements UserDetailsService, IUserService{
 		grantedAuthorities.add(new SimpleGrantedAuthority(rol.getRole()));
 		return new ArrayList<GrantedAuthority>(grantedAuthorities);
 	}
-
-
-
-
-	
-	
-	
-	
 	
 	@Override
 	@Transactional( readOnly = true )
@@ -78,5 +69,6 @@ public class UserService implements UserDetailsService, IUserService{
 			return false;
 		}
 	}
+
 
 }

@@ -12,22 +12,46 @@
 	<div class=container>
 		<h1 th:text="${titulo}"></h1>
 	</div>
-	<table class="table">
+	<div>
+	<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/espacios/agregar}"><button>Agregar Espacio para el cuatrimestre</button></a>
+<<<<<<< Updated upstream
+	<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/espacios/agregarEspacioDia}"><button>Agregar Espacio para un dia y turno</button></a>
+=======
+>>>>>>> Stashed changes
+	</div>
+	<table class="table table-primary table-striped">
 		<thead>
 			<tr>
-				<th scope="col">Id</th>
+<<<<<<< Updated upstream
 				<th scope="col">Fecha</th>
 				<th scope="col">Turno</th>
 				<th scope="col">Libre</th>
+				<th scope="col">Nº de aula</th>
+				<th scope="col">Edificio</th>
+=======
+				<th class="tHead">Fecha</th>
+				<th class="tHead">Turno</th>
+				<th class="tHead">Libre</th>
+				<th class="tHead">Edificio</th>
+				<th class="tHead">Nº de aula</th>
+>>>>>>> Stashed changes
 			</tr>
 
 		</thead>
 		<tbody>
 			<tr th:each="espacio: ${espacios}">
-				<th scope="row" th:text="${espacio.id}"></th>
 				<td th:text="${espacio.fecha}"></td>
 				<td th:text="${espacio.turno}"></td>
-				<td th:text="${espacio.libre}"></td>
+				<td th:text="${espacio.libre ? 'Libre' : 'Ocupado'}"></td>
+<<<<<<< Updated upstream
+				<td th:text="${espacio.aula.numero}"></td>
+				<td th:text="${espacio.aula.edificio.edificio}"></td>
+				<td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/espacios/ocupado/} + ${espacio.id}"><button th:text="${espacio.libre ? 'Ocupado' : 'Libre'}"></button></a></td>
+=======
+				<td th:text="${espacio.edificio.edificio}"></td>
+				<td th:text="${espacio.aula.numero}"></td>
+				<td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/espacios/ocupado/} + ${espacio.id}"><button th:text="${espacio.ocupado ? 'Desactivar' : 'Activar'}"></button></a></td>
+>>>>>>> Stashed changes
 			</tr>
 		</tbody>
 	</table>

@@ -17,6 +17,7 @@ import lombok.Setter;
 @Getter @Setter @NoArgsConstructor
 public class Espacio {
 	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id_espacio",unique=true)
@@ -33,6 +34,14 @@ public class Espacio {
 	
 	@Column(name="libre",nullable = false)
 	private boolean libre;
+
+	public Espacio(LocalDate fecha, char turno, Aula aula, boolean libre) {
+		super();
+		this.fecha = fecha;
+		this.turno = turno;
+		this.aula = aula;
+		this.libre = libre;
+	}
 	
 	
 	
