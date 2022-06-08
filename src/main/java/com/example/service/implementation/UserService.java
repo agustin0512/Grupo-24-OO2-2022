@@ -30,22 +30,28 @@ public class UserService implements UserDetailsService, IUserService{
 	@Override
 	@Transactional(readOnly=true)
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		com.example.entities.User user = repo.findByUsernameAndFetchUserRolesEagerly(username);
-		return buildUser(user, buildGrantedAuthorities(user.getUserRoles()));
+		com.example.entities.User user = repo.findByUsernameAndFetchURolEagerly(username);
+		return buildUser(user, buildGrantedAuthorities(user.getRol()));
 	}
 	
 	private User buildUser(com.example.entities.User user, List<GrantedAuthority> grantedAuthorities) {
 		return new User(user.getUsername(), user.getPassword(), grantedAuthorities);
 	}
 	
-	private List<GrantedAuthority> buildGrantedAuthorities(Set<UserRole> userRoles) {
+	private List<GrantedAuthority> buildGrantedAuthorities(UserRole rol) {
 		Set<GrantedAuthority> grantedAuthorities = new HashSet<GrantedAuthority>();
-		for(UserRole userRole: userRoles) {
-			grantedAuthorities.add(new SimpleGrantedAuthority(userRole.getRole()));
-		}
+		grantedAuthorities.add(new SimpleGrantedAuthority(rol.getRole()));
 		return new ArrayList<GrantedAuthority>(grantedAuthorities);
 	}
 
+
+
+
+	
+	
+	
+	
+	
 	@Override
 	@Transactional( readOnly = true )
 	public List<com.example.entities.User> traer() {

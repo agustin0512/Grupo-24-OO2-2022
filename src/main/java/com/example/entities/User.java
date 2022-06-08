@@ -10,6 +10,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -63,8 +65,12 @@ public class User {
 	@UpdateTimestamp
 	private LocalDateTime updatedAt;
 	
-	@OneToMany(fetch=FetchType.LAZY, mappedBy="user")
-	private Set<UserRole> userRoles = new HashSet<UserRole>();
+	
+	@ManyToOne
+	@JoinColumn(name="id_rol")
+	private UserRole rol;
+	
+	
 	
 	public User(String username, String password, boolean enabled) {
 		this.username = username;
@@ -72,18 +78,18 @@ public class User {
 		this.enabled = enabled;
 	}
 	
-	public User(String username, String password, boolean enabled, Set<UserRole> userRoles) {
+	public User(String username, String password, boolean enabled, UserRole rol) {
 		this.username = username;
 		this.password = password;
 		this.enabled = enabled;
-		this.userRoles = userRoles;
+		this.rol = rol;
 	}
 
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", mail=" + mail + ", nombre="
 				+ nombre + ", apellido=" + apellido + ", tipodoc=" + tipodoc + ", dni=" + dni + ", userRoles="
-				+ userRoles + "]";
+				+ rol + "]";
 	}
 
 	

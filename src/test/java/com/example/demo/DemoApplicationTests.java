@@ -22,8 +22,19 @@ public class DemoApplicationTests {
 
 	private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-	/*@Test
+	@Test
 	public void UsuarioTest() {
+		// Creamos el Roles para el Usuario
+		// Rol User
+		UserRole rolAdmin = new UserRole(); // Rol Admin
+		
+		rolAdmin.setRole("ROLE_ADMIN");
+
+		rolAdmin.setCreatedAt(LocalDateTime.now());
+	
+		rolAdmin.setUpdatedAt(LocalDateTime.now());
+		
+		userRoleService.guardar(rolAdmin);
 
 		// Creamos el Usuario
 		User user = new User();
@@ -37,25 +48,15 @@ public class DemoApplicationTests {
 		user.setEnabled(true);
 		user.setCreatedAt(LocalDateTime.now());
 		user.setUpdatedAt(LocalDateTime.now());
+		user.setRol(rolAdmin);
+
 		
-		// Creamos el Roles para el Usuario
-		UserRole rolUser = new UserRole();	// Rol User
-		UserRole rolAdmin = new UserRole(); // Rol Admin
-		rolUser.setRole("ROLE_USER");
-		rolAdmin.setRole("ROLE_ADMIN");
-		rolUser.setCreatedAt(LocalDateTime.now());
-		rolAdmin.setCreatedAt(LocalDateTime.now());
-		rolUser.setUpdatedAt(LocalDateTime.now());
-		rolAdmin.setUpdatedAt(LocalDateTime.now());
-		rolUser.setUser(user);
-		rolAdmin.setUser(user);
-		user.getUserRoles().add(rolUser);
-		user.getUserRoles().add(rolAdmin);
 		
 		// Guardamos User y sus Roles en la BD
+
 		userService.guardar(user);
-		userRoleService.guardar(rolAdmin);
-		userRoleService.guardar(rolUser);
+
+
 	}
-	*/
+	
 }

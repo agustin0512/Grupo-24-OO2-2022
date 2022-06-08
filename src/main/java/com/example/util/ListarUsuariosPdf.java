@@ -160,7 +160,7 @@ public class ListarUsuariosPdf extends AbstractPdfView {
 			tablaUsuarios.addCell(celda);
 			
 
-			celda = new PdfPCell(new Phrase(usuario.getUserRoles().toString(), fuenteDataCeldas));
+			celda = new PdfPCell(new Phrase(usuario.getRol().toString(), fuenteDataCeldas));
 			celda.setHorizontalAlignment(Element.ALIGN_CENTER);
 			celda.setVerticalAlignment(Element.ALIGN_CENTER);
 			celda.setPadding(5);
