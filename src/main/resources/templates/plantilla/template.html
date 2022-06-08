@@ -6,7 +6,22 @@
 <title>CRUDD Usuarios</title>
 <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 <link rel="stylesheet" th:href="@{/css/signin.css}">
+<<<<<<< Updated upstream
 
+=======
+<script
+			src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+			integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+			crossorigin="anonymous"></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+			integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+			crossorigin="anonymous"></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
+			integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2"
+			crossorigin="anonymous"></script>
+>>>>>>> Stashed changes
 
 </head>
 <body>
@@ -32,8 +47,9 @@
 							aria-current="page" th:href="@{/}">INICIO <span
 								class="sr-only"></span>
 						</a></li>
-						<li class="nav-item"><a class="nav-link" th:href="@{usuarios/listar}">Usuarios</a>
+						<li class="nav-item"><a class="nav-link" th:href="@{/usuarios/listar}">Usuarios</a>
       					  </li>
+<<<<<<< Updated upstream
 					</ul>
 
 
@@ -45,8 +61,6 @@
 								sec:authentication="name"></span></a>
 
 							<div class="dropdown-menu " aria-labelledby="dropdownMenuLink">
-								<a class="dropdown-item" href="#">Action</a> <a
-									class="dropdown-item" href="#">Another action</a> 
 									<form th:action="@{/logout}" method="post">
 										<button class="dropdown-item" type="submit">Cerrar Sesion</button>
 									</form>
@@ -54,6 +68,26 @@
 
 					</ul>
 
+=======
+					</ul>
+
+
+					<ul class="navbar-nav ml-auto">
+						<li class="dropdown show "><a
+							class="btn btn-outline-warning dropdown-toggle" href="#"
+							role="button" id="dropdownMenuLink" data-toggle="dropdown"
+							aria-haspopup="true" aria-expanded="false"> <span
+								sec:authentication="name"></span></a>
+
+							<div class="dropdown-menu " aria-labelledby="dropdownMenuLink">
+									<form th:action="@{/logout}" method="post">
+										<button class="dropdown-item" type="submit">Cerrar Sesion</button>
+									</form>
+							</div></li>
+
+					</ul>
+
+>>>>>>> Stashed changes
 				</div>
 			</div>
 		</nav>
@@ -72,6 +106,7 @@
 			<p>Copyright Grupo24 &copy; 2022</p>
 		</div>
 
+<<<<<<< Updated upstream
 		<script
 			src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
 			integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -84,6 +119,9 @@
 			src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
 			integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2"
 			crossorigin="anonymous"></script>
+=======
+		
+>>>>>>> Stashed changes
 
 
 

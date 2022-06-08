@@ -2,7 +2,6 @@ package com.example.repo;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -15,10 +14,12 @@ import com.example.entities.Espacio;
 @Repository("espacioRepository")
 public interface IEspacioRepository extends JpaRepository<Espacio,Serializable> {
 	
-	@Query("SELECT e from Espacio e JOIN FETCH e.aula WHERE e.fecha = (:fecha) "
-			+ "AND e.turno = (:turno) AND e.aula = (:aula)")
-	public abstract List<Espacio> findAllByFechaAndTurnoAndAula(@Param("fecha") LocalDate fecha, 
-			@Param("turno") char turno, 
-			@Param("aula") Aula aula);
+	@Query("SELECT e from Espacio e JOIN FETCH e.aula a WHERE e.fecha = (:fecha) "
+			+ "AND e.turno = (:turno) AND a.id = :#{#aula.id}")
+<<<<<<< Updated upstream
+	public abstract List<Espacio> findAllByFechaAndTurnoAndAula(LocalDate fecha, char turno, @Param("aula") Aula aula);
+=======
+	public abstract Espacio find(LocalDate fecha, char turno, @Param("aula") Aula aula);
+>>>>>>> Stashed changes
 
 }
