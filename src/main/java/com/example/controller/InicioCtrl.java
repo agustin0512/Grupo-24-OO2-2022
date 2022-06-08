@@ -51,6 +51,20 @@ public class InicioCtrl {
 		return "/views/usuarios/listar"; // Indicamos la plantilla html a usar(index)
 	}
 	
+	@GetMapping("")
+	public String Index(Model model) {
+		List<UserRole> roles=userRoleService.traer();
+		User user= new User();
+		model.addAttribute("titulo","Formulario creacion de usuario");
+		model.addAttribute("usuario", user);// Instanciamos un User para cargar en el Form
+		model.addAttribute("roles", roles);
+		
+		return "";
+		} // Indicamos la plantilla html a usar (Form Agregar)
+
+	
+	
+	
 	/************* AGREGAR USUARIO *************/
 	
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
@@ -83,6 +97,7 @@ public class InicioCtrl {
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping("/usuarios/modificar/{id}")
 	public String modificar(User user, Model model) {
+		model.addAttribute("titulo","Formulario Modificar de usuario");
 		user = userService.traer(user.getId());	// Se obtiene el User a Modificar
 		model.addAttribute("usuario", user);	// Se comparte el User para el autocompletado del form
 		return "/views/usuarios/formModificar"; // Indicamos la plantilla html a usar (Form Modificar)
@@ -105,6 +120,9 @@ public class InicioCtrl {
 		userService.guardar(user);
 		return "redirect:/usuarios/listar"; // Redirecciona a Inicio
 	}
+	
+	
+	
 	
 	/************* LISTAR ESPACIOS *************/
 	@GetMapping("/espacios/listar")
