@@ -18,22 +18,30 @@
 			<div class="form-group row">
 				<label class="col-md-2" for="fechas">Fecha:</label> 
 				<input type="date" th:field="*{fecha}" class="form-control form-control-sm col-md-6"
-					id="fechas"  placeholder="Fecha">
+					id="fechas" placeholder="Fecha">
 				<small></small>
 			</div>
 			
 			<div class="form-group row">
-				<label class="col-md-2" for="turnos">Turno:</label> 
-				<input type="text" th:field="*{turno}" class="form-control form-control-sm col-md-6"
-					id="turnos"  placeholder="Turno">
-				<small></small>
+				<label class="col-md-2" for="turnos">Turno:</label>
+				<div class="form-check ml-1">
+					<input class="form-check-input" type="radio" th:id="'M'" th:field="*{turno}" th:name="'turno'" th:value="'M'">
+					<label class="form-check-label" for="M">Mañana</label>
+				</div>
+				<div class="form-check ml-1">
+					<input class="form-check-input" type="radio" th:id="'T'" th:field="*{turno}" th:name="'turno'" th:value="'T'">
+					<label class="form-check-label" for="T">Tarde</label>
+				</div>
+				<div class="form-check ml-1">
+					<input class="form-check-input" type="radio" th:id="'N'" th:field="*{turno}" th:name="'turno'" th:value="'N'">
+					<label class="form-check-label" for="N">Noche</label>
+				</div>
 			</div>
-			
 			
 			<div class="form-group row">
 				<label class="col-md-2" for="aula">Aula:</label> 
 				<input type="text" th:field="*{aula}" class="form-control form-control-sm col-md-6"
-					id="aula"  placeholder="Aula">
+					id="aula" placeholder="Aula">
 				<small></small>
 			</div>
 			
@@ -51,7 +59,7 @@
 			<div class="form-group row">
 				<label class="col-md-2" for="dni">Cantidad de Estudiantes:</label> 
 				<input type="number" th:field="*{cantEstudiantes}" class="form-control form-control-sm col-md-6"
-					id="cantEstudiantes"  placeholder="Cantidad de Estudiantes">
+					id="cantEstudiantes" placeholder="Cantidad de Estudiantes">
 				<small></small>
 			</div>
 			
@@ -59,7 +67,7 @@
 			<div class="form-group row">
 				<label class="col-md-2" for="observaciones">Observaciones: </label> 
 				 <input  type="text" th:field="*{observaciones}" class="form-control form-control-sm col-md-6"
-					id="observaciones"  placeholder="Observaciones">
+					id="observaciones" placeholder="Observaciones">
 				<small></small>
 			</div>
 				
@@ -68,6 +76,7 @@
 			</div>
 		
 		</form>
+		<a th:href="@{/pedidos/listar}"><button class="btn btn-danger mt-1">Cancelar</button></a>
 		</div>
 	</div>
 	</div>

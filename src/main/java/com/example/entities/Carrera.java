@@ -24,7 +24,7 @@ import lombok.Setter;
 public class Carrera {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id_carrera",unique=true)
 	private int idCarrera ;
 	
