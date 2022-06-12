@@ -28,7 +28,7 @@ import lombok.Setter;
 public class NotaPedido {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id_nota_pedido",unique=true,nullable = false)
 	private int idNotaPedido ;
 	
@@ -48,32 +48,28 @@ public class NotaPedido {
 	@JoinColumn(name = "id_materia")
 	private Materia materia;
 	
+	@Column(name="cant_estudiantes" ,length=150)
+	private int cantEstudiantes;
+	
 	@Column(name="observaciones" ,length=150)
 	private String  observaciones;
 
-	
-
-	public NotaPedido(int idNotaPedido, LocalDateTime fecha, char turno, Aula aula, Materia materia,
-			String observaciones) {
+	public NotaPedido(LocalDateTime fecha, char turno, Aula aula, Materia materia,
+			int cantEstudiantes, String observaciones) {
 		super();
-		this.idNotaPedido = idNotaPedido;
 		this.fecha = fecha;
 		this.turno = turno;
 		this.aula = aula;
 		this.materia = materia;
+		this.cantEstudiantes = cantEstudiantes;
 		this.observaciones = observaciones;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "NotaPedido [idNotaPedido=" + idNotaPedido + ", fecha=" + fecha + ", turno=" + turno + ", aula=" + aula
-				+ ", materia=" + materia + ", observaciones=" + observaciones + "]";
+				+ ", materia=" + materia + ", cantEstudiantes=" + cantEstudiantes + ", observaciones=" + observaciones
+				+ "]";
 	}
-	
-	
-	
-	
-	
-	
 
 }

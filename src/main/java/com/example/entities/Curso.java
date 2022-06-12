@@ -23,9 +23,9 @@ public class Curso extends NotaPedido{
 	@Column(name="cod_curso",length=100, nullable = false)
 	private String codCurso;
 
-	public Curso(int idNotaPedido, LocalDateTime fecha, char turno, Aula aula, Materia materia, String observaciones,
+	public Curso(LocalDateTime fecha, char turno, Aula aula, Materia materia, int cantEstudiantes, String observaciones,
 			String codCurso) {
-		super(idNotaPedido, fecha, turno, aula, materia, observaciones);
+		super(fecha, turno, aula, materia, cantEstudiantes, observaciones);
 		this.codCurso = codCurso;
 	}
 

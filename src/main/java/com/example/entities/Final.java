@@ -25,9 +25,9 @@ public class Final extends NotaPedido{
 	@UpdateTimestamp
 	private LocalDateTime fechaExamen;
 
-	public Final(int idNotaPedido, LocalDateTime fecha, char turno, Aula aula, Materia materia, String observaciones,
+	public Final(LocalDateTime fecha, char turno, Aula aula, Materia materia, int cantEstudiantes, String observaciones,
 			LocalDateTime fechaExamen) {
-		super(idNotaPedido, fecha, turno, aula, materia, observaciones);
+		super(fecha, turno, aula, materia, cantEstudiantes, observaciones);
 		this.fechaExamen = fechaExamen;
 	}
 
