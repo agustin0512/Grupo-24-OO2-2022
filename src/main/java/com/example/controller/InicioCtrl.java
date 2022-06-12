@@ -1,10 +1,7 @@
 package com.example.controller;
 
 import java.time.LocalDateTime;
-//import java.util.HashSet;
 import java.util.List;
-//import java.util.Set;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -14,8 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-
 
 import com.example.entities.Espacio;
 import com.example.entities.User;
@@ -24,8 +19,6 @@ import com.example.service.implementation.EspacioService;
 import com.example.service.implementation.UserRoleService;
 import com.example.service.implementation.UserService;
 
-
-//@RequestMapping("/views/usuarios")
 @Controller
 public class InicioCtrl {
 	@Autowired

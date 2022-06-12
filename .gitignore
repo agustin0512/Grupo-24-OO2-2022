@@ -33,3 +33,6 @@ build/
 .vscode/
 target/classes/application.properties
 src/main/resources/application.properties
+src/main/resources/application.properties
+*.properties
+target/classes/application.properties
