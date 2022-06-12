@@ -2,7 +2,7 @@ package com.example.entities;
 
  
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,7 +23,7 @@ public class Curso extends NotaPedido{
 	@Column(name="cod_curso",length=100, nullable = false)
 	private String codCurso;
 
-	public Curso(LocalDateTime fecha, char turno, Aula aula, Materia materia, int cantEstudiantes, String observaciones,
+	public Curso(LocalDate fecha, char turno, String aula, Materia materia, int cantEstudiantes, String observaciones,
 			String codCurso) {
 		super(fecha, turno, aula, materia, cantEstudiantes, observaciones);
 		this.codCurso = codCurso;

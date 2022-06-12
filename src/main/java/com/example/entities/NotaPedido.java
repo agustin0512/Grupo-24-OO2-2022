@@ -1,7 +1,6 @@
 package com.example.entities;
 
-import java.time.LocalDateTime;
-
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,7 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -34,15 +33,14 @@ public class NotaPedido {
 	
 	
 	@Column(name="fecha_pedido")
-	@UpdateTimestamp
-	private LocalDateTime fecha;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate fecha;
 	
 	@Column(name="turno" ,length=1, nullable = false)
 	private char  turno;
 	
-	@ManyToOne
-	@JoinColumn(name = "id_aula")
-	private Aula aula;
+	@JoinColumn(name = "aula")
+	private String aula;
 	
 	@ManyToOne
 	@JoinColumn(name = "id_materia")
@@ -54,7 +52,7 @@ public class NotaPedido {
 	@Column(name="observaciones" ,length=150)
 	private String  observaciones;
 
-	public NotaPedido(LocalDateTime fecha, char turno, Aula aula, Materia materia,
+	public NotaPedido(LocalDate fecha, char turno, String aula, Materia materia,
 			int cantEstudiantes, String observaciones) {
 		super();
 		this.fecha = fecha;

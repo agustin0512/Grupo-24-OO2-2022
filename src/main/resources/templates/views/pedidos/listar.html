@@ -1,10 +1,50 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="plantilla/template :: head">
+
 </head>
 <body>
+	<header th:replace="plantilla/template :: header"></header>
 
+	<div class=container>
+		<h1 th:text="'Pedidos'"></h1>
+	</div>
+
+	<div class=container>
+
+		<a class="btn btn-primary btn-sm"
+			th:href="@{/pedidos/agregar}"
+			th:text="'Nuevo Pedido'" title="Crear nuevo pedido"></a>
+		<table class="table table-primary table-striped">
+			<thead>
+				<tr>
+					<th scope="col">ID</th>
+					<th scope="col">Fecha</th>
+					<th scope="col">Turno</th>
+					<th scope="col">Aula</th>
+					<th scope="col">Materia</th>
+					<th scope="col">Cantidad de Estudiantes</th>
+					<th scope="col">Observaciones</th>
+				</tr>
+
+			</thead>
+			<tbody>
+				<tr th:each="pedido: ${pedidos}">
+					<th scope="row" th:text="${pedido.idNotaPedido}"></th>
+					<td th:text="${pedido.fecha}"></td>
+					<td th:text="${pedido.turno}"></td>
+					<td th:text="${pedido.aula}"></td>
+					<td th:text="${pedido.materia.materia}"></td>
+					<td th:text="${pedido.cantEstudiantes}"></td>
+					<td th:text="${pedido.observaciones}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<footer th:replace="plantilla/template  :: footer"></footer>
 </body>
+
 </html>
