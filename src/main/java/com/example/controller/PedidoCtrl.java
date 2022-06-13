@@ -44,7 +44,6 @@ public class PedidoCtrl {
 	
 	@PostMapping("/pedidos/agregar")
 	public String guardar(@ModelAttribute NotaPedido pedido) {
-		System.out.println("Detener");
 		pedidoService.guardar(pedido);
 		System.out.println("Pedido guardado con exito!");
 		return "redirect:/pedidos/listar";
