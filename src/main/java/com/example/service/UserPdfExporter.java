@@ -1,4 +1,4 @@
-package com.example.service;
+/*package com.example.service;
 
 import java.awt.Color;
 import java.io.IOException;
@@ -16,7 +16,7 @@ public class UserPdfExporter {
     public UserPdfExporter(List<User> listUsers) {
         this.listUsers = listUsers;
     }
-    /*
+
     private void writeTableHeader(PdfPTable table) {
         PdfPCell cell = new PdfPCell();
         cell.setBackgroundColor(Color.BLUE);
@@ -91,6 +91,7 @@ public class UserPdfExporter {
         document.add(table);
          
         document.close();
-     */    
+   
     }
 
+*/

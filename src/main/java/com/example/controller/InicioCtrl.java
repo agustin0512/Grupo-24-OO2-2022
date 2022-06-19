@@ -1,10 +1,7 @@
 package com.example.controller;
 
 import java.time.LocalDateTime;
-//import java.util.HashSet;
 import java.util.List;
-//import java.util.Set;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -14,8 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-
 
 import com.example.entities.Espacio;
 import com.example.entities.User;
@@ -24,8 +19,6 @@ import com.example.service.implementation.EspacioService;
 import com.example.service.implementation.UserRoleService;
 import com.example.service.implementation.UserService;
 
-
-//@RequestMapping("/views/usuarios")
 @Controller
 public class InicioCtrl {
 	@Autowired
@@ -63,7 +56,7 @@ public class InicioCtrl {
 		model.addAttribute("usuario", user);// Instanciamos un User para cargar en el Form
 		model.addAttribute("roles", roles);
 		
-		return "/views/usuarios/formAgregar";
+		return "/views/usuarios/agregar";
 		} // Indicamos la plantilla html a usar (Form Agregar)
 
 	
@@ -86,7 +79,7 @@ public class InicioCtrl {
 	public String modificar(User user, Model model) {
 		user = userService.traer(user.getId());	// Se obtiene el User a Modificar
 		model.addAttribute("usuario", user);	// Se comparte el User para el autocompletado del form
-		return "/views/usuarios/formModificar"; // Indicamos la plantilla html a usar (Form Modificar)
+		return "/views/usuarios/modificar"; // Indicamos la plantilla html a usar (Form Modificar)
 	}
 	
 	@PreAuthorize("hasRole('ROLE_ADMIN')")

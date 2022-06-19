@@ -24,7 +24,7 @@ import lombok.Setter;
 public class Materia {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id_materia",unique=true,nullable = false)
 	private int idMateria ;
 	
@@ -38,8 +38,7 @@ public class Materia {
 	@JoinColumn(name = "id_carrera")
 	private Carrera carrera;
 	
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "id_nota_pedido")
+	@OneToMany(mappedBy = "materia", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<NotaPedido> notasPedidos;
 
 	

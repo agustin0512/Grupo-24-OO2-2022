@@ -24,7 +24,7 @@ import lombok.Setter;
 public class Departamento {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id_dpto",unique=true)
 	private int idDepartamento ;
 	

@@ -1,6 +1,5 @@
 package com.example.entities;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -25,7 +24,7 @@ import lombok.Setter;
 public class Carrera {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id_carrera",unique=true)
 	private int idCarrera ;
 	

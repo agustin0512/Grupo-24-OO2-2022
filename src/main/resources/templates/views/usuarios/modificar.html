@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="plantilla/template :: head">
+  <meta charset="utf-8" />
+</head>
+<body>
+	<header th:replace="plantilla/template :: header"></header>
+	<div class="container">
+		<div class="card bg-light">
+			<div class="card-header bd-dark text white" th:text="${titulo}"></div>
+			<div class="card-body">
+		
+				<!-- Agregar usuario -->
+				<form th:action="@{/usuarios/modificar}" method="post" th:object="${usuario}">
+					<input type="hidden" th:field="*{id}" />
+					
+					<div class="form-group row">
+						<label class="col-md-2" for="nombres">Nombres:</label> 
+						<input type="text" th:field="*{nombre}" class="form-control form-control-sm col-md-6"
+							id="nombres"  placeholder="Nombres del usuario">
+						<small></small>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-md-2" for="apellidos">Apellidos:</label> 
+						<input type="text" th:field="*{apellido}" class="form-control form-control-sm col-md-6"
+							id="apellidos"  placeholder="Apellido del usuario">
+						<small></small>
+					</div>
+					
+					<div class="form-group row">
+						<label class="col-md-2" for="mail">Mail:</label> 
+						<input type="text" th:field="*{mail}" class="form-control form-control-sm col-md-6"
+							id="mail"  placeholder="Mail del usuario">
+						<small></small>
+					</div>
+					
+					<div class="form-group row">
+						<label class="col-md-2" for="tipodoc">Tipo Documento:</label> 
+						<input type="text" th:field="*{tipodoc}" class="form-control form-control-sm col-md-6"
+							id="tipodoc"  placeholder="Tipo Documento del usuario">
+						<small></small>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-md-2" for="dni">Nro Documento:</label> 
+						<input type="text" th:field="*{dni}" class="form-control form-control-sm col-md-6"
+							id="dni"  placeholder="Nro Documento del usuario">
+						<small></small>
+					</div>
+					
+					<input type="hidden" th:field="*{username}" />
+					<input type="hidden" th:field="*{password}" />
+					<input type="hidden" th:field="*{enabled}" />
+					<input type="hidden" th:field="*{createdAt}" />
+					<input type="hidden" th:field="*{rol.idRol}" >
+					
+					<div>
+						<input type="submit" class="btn btn-primary" value="Guardar"/>
+					</div>
+				</form>
+				<a th:href="@{/usuarios/listar}" ><button class="btn btn-danger mt-1">Cancelar</button></a>		
+			</div>
+		</div>
+	</div>
+	<footer th:replace="plantilla/template  :: footer"></footer>
+</body>
+</html>

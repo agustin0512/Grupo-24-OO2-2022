@@ -16,7 +16,7 @@
 	
 	<div class=container>
 	
-	<a class="btn btn-primary btn-sm" sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/usuarios/agregar}" 
+	<a class="btn btn-success btn-sm" sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/usuarios/agregar}" 
 	th:text="'Nuevo usuario'" title="Crear nuevo usuario"></a>
 	<a class="btn btn-info btn-sm" th:href="@{/usuarios/listar?format=pdf}" target=”_blank” th:text="'Descargar PDF'" title="Crear nuevo usuario"></a>
 =======
@@ -53,8 +53,8 @@
 				<td th:text="${usuario.dni}"></td>
 				<td th:text="${usuario.enabled ? 'Activo' : 'Inactivo'}"></td>
 				<td th:text="${usuario.rol.role}"></td>
-				<td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/usuarios/modificar/} + ${usuario.id}"><button>Modificar</button></a></td>
-				<td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/usuarios/desactivar/} + ${usuario.id}"><button th:text="${usuario.enabled ? 'Desactivar' : 'Activar'}"></button></a></td>
+				<td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/usuarios/modificar/} + ${usuario.id}"><button  class="btn btn-primary">Modificar</button></a></td>
+				<td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/usuarios/desactivar/} + ${usuario.id}"><button th:text="${usuario.enabled ? 'Desactivar' : 'Activar'}"  class="btn btn-danger"></button></a></td>
 
 			</tr>
 		</tbody>

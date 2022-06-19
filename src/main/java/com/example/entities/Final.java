@@ -1,6 +1,6 @@
 package com.example.entities;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,11 +23,11 @@ public class Final extends NotaPedido{
 	
 	@Column(name="fecha_examen")
 	@UpdateTimestamp
-	private LocalDateTime fechaExamen;
+	private LocalDate fechaExamen;
 
-	public Final(int idNotaPedido, LocalDateTime fecha, char turno, Aula aula, Materia materia, String observaciones,
-			LocalDateTime fechaExamen) {
-		super(idNotaPedido, fecha, turno, aula, materia, observaciones);
+	public Final(LocalDate fecha, char turno, String aula, Materia materia, int cantEstudiantes, String observaciones,
+			LocalDate fechaExamen) {
+		super(fecha, turno, aula, materia, cantEstudiantes, observaciones);
 		this.fechaExamen = fechaExamen;
 	}
 

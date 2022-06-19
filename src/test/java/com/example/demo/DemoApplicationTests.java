@@ -26,14 +26,12 @@ public class DemoApplicationTests {
 	public void UsuarioTest() {
 		// Creamos el Roles para el Usuario
 		// Rol User
+		UserRole rolUser = new UserRole(); // Rol Admin
 		UserRole rolAdmin = new UserRole(); // Rol Admin
 		
+		rolUser.setRole("ROLE_USER");
 		rolAdmin.setRole("ROLE_ADMIN");
-
-		rolAdmin.setCreatedAt(LocalDateTime.now());
-	
-		rolAdmin.setUpdatedAt(LocalDateTime.now());
-		
+		userRoleService.guardar(rolUser);
 		userRoleService.guardar(rolAdmin);
 
 		// Creamos el Usuario
