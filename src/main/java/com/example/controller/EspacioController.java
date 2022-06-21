@@ -9,14 +9,11 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.example.entities.Espacio;
-import com.example.service.IEspacioService;
 import com.example.entities.Aula;
 import com.example.entities.Edificio;
 import com.example.entities.Espacio;
@@ -26,22 +23,11 @@ import com.example.service.implementation.EspacioService;
 
 
 
-
 @Controller
 public class EspacioController {
 	
 	@Autowired
 	@Qualifier("espacioService")
-
-	private IEspacioService espacioService;
-	
-	@GetMapping("/add")
-	public ModelAndView agregarEspacios(@RequestParam(name="fechainicio", required=true, defaultValue="null") String sFechaInicio,
-									@RequestParam(name="fechafin", required=true, defaultValue="null") String sFechaFin) {
-		ModelAndView mAv = new ModelAndView("/espacios/crear");
-		mAv.addObject("espaciosAgregados", espacioService.agregarTodosLosEspacios(LocalDate.parse(sFechaInicio), LocalDate.parse(sFechaFin)));
-		return mAv;
-
 	private EspacioService espacioService;
 	@Autowired
 	private EdificioService edificioService;
@@ -79,8 +65,9 @@ public class EspacioController {
 		LocalDate fechaFin = LocalDate.parse(sFechaFinal);
 		try {
 			espacioService.agregarTodosLosEspacios(fechaInicio, fechaFin);
+			redirectAttrs.addFlashAttribute("ok", "Los espacios fueron agregados");
 		} catch (Exception e) {
-			redirectAttrs.addFlashAttribute("mensaje", "El espacio ya existe");
+			redirectAttrs.addFlashAttribute("error", "Ya existen espacios dentro del rango de fechas ingresado");
 			e.printStackTrace();
 		}
 		// Redireccion a Inicio
@@ -105,8 +92,9 @@ public class EspacioController {
 		// Creamos el Espacio
 		try {
 			espacioService.crear(espacio.getFecha(), espacio.getTurno(), espacio.getAula(), true);
+			redirectAttrs.addFlashAttribute("ok", "El espacio fue agregado");
 		} catch (Exception e) {
-			redirectAttrs.addFlashAttribute("mensaje", "El espacio ya existe");
+			redirectAttrs.addFlashAttribute("error", "El espacio ya existe");
 			e.printStackTrace();
 		}
 		// Redireccion a Inicio
@@ -133,8 +121,9 @@ public class EspacioController {
 		// Creamos el Espacio
 		try {
 			espacioService.agregarEspacioMes(Integer.parseInt(mes), Integer.parseInt(anio), espacio.getTurno(), espacio.getAula());
+			redirectAttrs.addFlashAttribute("ok", "Los espacios fueron agregados");
 		} catch (Exception e) {
-			redirectAttrs.addFlashAttribute("mensaje", "El espacio ya existe");
+			redirectAttrs.addFlashAttribute("error", "Ya existen espacios dentro del rango de fechas ingresado");
 			e.printStackTrace();
 		}
 		// Redireccion a Inicio
@@ -151,6 +140,4 @@ public class EspacioController {
 		espacioService.guardar(espacio);
 		return "redirect:/espacios/listar"; // Redirecciona a Inicio
 	}
-	
-	
 }

@@ -39,28 +39,12 @@ public class EspacioService implements IEspacioService {
 	public Espacio guardar(Espacio espacio) {
 		return repo.save(espacio);
 	}
-
-
-	@Override
-	public boolean agregarEspacioDia(LocalDate fecha, Aula aula) {
-		guardar(new Espacio(fecha,'M',aula,true));
-		guardar(new Espacio(fecha,'T',aula,true));
-		guardar(new Espacio(fecha,'N',aula,true));
-		return true;
-	}
-
-	@Override
-	public boolean agregarEspaciosEntreFechas(LocalDate fechaInicial, LocalDate fechaFinal, Aula aula) {
-		// Cuatrimestre: definir fecha inicio y fin
-		LocalDate actual = fechaInicial;
-		while(actual.isBefore(fechaFinal.plusDays(1))) {
-			agregarEspacioDia(actual,aula);
 	
 	public Espacio crear(LocalDate fecha, char turno, Aula aula, boolean libre) throws Exception {
 		if(traer(fecha,turno,aula)!=null) {
 			throw new Exception("El espacio ya existe");
 		}
-		return repo.save(new Espacio(fecha,turno,aula, libre));
+		return guardar(new Espacio(fecha,turno,aula, libre));
 	}
 	
 
@@ -70,39 +54,27 @@ public class EspacioService implements IEspacioService {
 		// Cuatrimestre: definir fecha inicio y fin
 		LocalDate actual = fechaInicial;
 		while(actual.isBefore(fechaFinal.plusDays(1))) {
-			crear(fechaInicial,'M',aula,true);
-			crear(fechaInicial,'T',aula,true);
-			crear(fechaInicial,'N',aula,true);
-
+			crear(actual,'M',aula,true);
+			crear(actual,'T',aula,true);
+			crear(actual,'N',aula,true);
 			actual=actual.plusDays(1);
 		}
 		return true;
 	}
 	
-
-	public boolean agregarEspacioMes(int mes,int anio,char turno, Aula aula) {
-
 	public boolean agregarEspacioMes(int mes,int anio,char turno, Aula aula) throws Exception {
-
 		LocalDate inicio = LocalDate.of(anio, mes, 1);
 		int ultimoDiaMes = inicio.lengthOfMonth();
 		LocalDate fin = LocalDate.of(anio, mes, ultimoDiaMes);
 		while(inicio.isBefore(fin.plusDays(1))) {
-			guardar(new Espacio(inicio,turno,aula,true));
-
 			crear(inicio,turno,aula,true);
-
 			inicio=inicio.plusDays(1);
 		}
 		return true;
 	}	
 	
 	@Override
-
-	public boolean agregarTodosLosEspacios(LocalDate fechaInicio, LocalDate fechaFin) {
-
 	public boolean agregarTodosLosEspacios(LocalDate fechaInicio, LocalDate fechaFin) throws Exception {
-
 		List<Aula> lstAulas=aulaService.getAll();
 		for(Aula aula : lstAulas){
 			agregarEspaciosEntreFechas(fechaInicio,fechaFin,aula);
@@ -114,5 +86,4 @@ public class EspacioService implements IEspacioService {
 	public Espacio traer(LocalDate fecha, char turno, Aula aula) {
 		return repo.traer(fecha, turno, aula);
 	}
-
 }

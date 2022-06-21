@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.entities.Materia;
 import com.example.entities.NotaPedido;
@@ -45,9 +46,9 @@ public class PedidoCtrl {
 	}
 	@PreAuthorize("hasRole('ROLE_USER')")
 	@PostMapping("/pedidos/agregar")
-	public String guardar(@ModelAttribute NotaPedido pedido) {
+	public String guardar(@ModelAttribute NotaPedido pedido, RedirectAttributes redirectAttrs) {
 		pedidoService.guardar(pedido);
-		System.out.println("Pedido guardado con exito!");
+		redirectAttrs.addFlashAttribute("ok", "Pedido creado con exito");
 		return "redirect:/pedidos/listar";
 		
 	}
