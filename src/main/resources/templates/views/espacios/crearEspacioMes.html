@@ -13,11 +13,16 @@
 		<h1 th:text="${titulo}"></h1>
 	</div>
 <div class="formulario">
-	    <form action="#" th:action="@{/espacios/agregarEspacioDia}" th:object=${espacio} method="post">
+	    <form action="#" th:action="@{/espacios/agregarEspacioMes}" th:object=${espacio} method="post">
 	        <ul class="listaForm">
 	            <li class="fecha">
-	                <label for="fecha"><b>Ingrese fecha para la cual quiere reservar el espacio:</b></label>
-	                <input class="inputFecha" type="date" name="fecha" id="fecha">
+	                <label for="mes"><b>Ingrese mes:</b></label>
+	                <input type="text" name="mes" id="mes">
+	            </li>
+	            
+	            <li class="fecha">
+	                <label for="anio"><b>Ingrese anio:</b></label>
+	                <input type="text" name="anio" id="anio">
 	            </li>
 	            
 	           <li class="form-group row">
@@ -29,6 +34,7 @@
 				</select>
 				<small></small>
 			</li>
+			
 	           
 	           <li class="form-group row">
 				<label class="col-md-2" for="turno" >Turno:</label> 

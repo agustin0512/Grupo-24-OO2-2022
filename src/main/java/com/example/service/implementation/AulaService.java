@@ -22,4 +22,11 @@ public class AulaService implements IAulaService{
 		return aulaRepository.findAll();
 	}
 
+	
+
+	@Override
+	public Aula traer(int id) {
+		return aulaRepository.getById(id);
+	}
+
 }

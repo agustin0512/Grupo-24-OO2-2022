@@ -22,5 +22,9 @@ public class EdificioService implements IEdificioService {
 	public List<Edificio> traer() {
 		return (List<Edificio>) edificioRepository.findAll();
 	}
+	
+	public Edificio traerEdificioYAulas(int id) {
+		return edificioRepository.findByIdAndFetchAulas(id);
+	}
 
 }
