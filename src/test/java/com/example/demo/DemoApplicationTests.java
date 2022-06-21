@@ -28,12 +28,13 @@ public class DemoApplicationTests {
 		// Rol User
 		UserRole rolUser = new UserRole(); // Rol Admin
 		UserRole rolAdmin = new UserRole(); // Rol Admin
-		
+		UserRole rolAudit = new UserRole(); // Rol Admin
 		rolUser.setRole("ROLE_USER");
 		rolAdmin.setRole("ROLE_ADMIN");
+		rolAudit.setRole("ROLE_AUDIT");
 		userRoleService.guardar(rolUser);
 		userRoleService.guardar(rolAdmin);
-
+		userRoleService.guardar(rolAudit);
 		// Creamos el Usuario
 		User user = new User();
 		user.setNombre("Juan");
