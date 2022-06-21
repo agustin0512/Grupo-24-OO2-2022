@@ -12,13 +12,21 @@
 	<div class=container>
 		<h1 th:text="${titulo}"></h1>
 	</div>
-	<table class="table">
+	<div class=container>
+	<a class="btn btn-info btn-sm" sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/espacios/agregar}" th:text="'Agregar Espacios para el cuatrimestre'"></a>
+	<a class="btn btn-info btn-sm" sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/espacios/agregarEspacioDia}" th:text="'Agregar Espacio para un dia'"></a>
+	<a class="btn btn-info btn-sm" sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/espacios/agregarEspacioMes}" th:text="'Agregar Espacio para un mes'"></a>
+	</div>
+	<div class="container">
+	<table class="table table-primary table-striped">
 		<thead>
 			<tr>
 				<th scope="col">Id</th>
 				<th scope="col">Fecha</th>
 				<th scope="col">Turno</th>
 				<th scope="col">Libre</th>
+				<th scope="col">Nº de aula</th>
+				<th scope="col">Edificio</th>
 			</tr>
 
 		</thead>
@@ -27,10 +35,14 @@
 				<th scope="row" th:text="${espacio.id}"></th>
 				<td th:text="${espacio.fecha}"></td>
 				<td th:text="${espacio.turno}"></td>
-				<td th:text="${espacio.libre}"></td>
+				<td th:text="${espacio.libre ? 'Libre' : 'Ocupado'}"></td>
+				<td th:text="${espacio.aula.numero}"></td>
+				<td th:text="${espacio.aula.edificio.edificio}"></td>
+				<td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/espacios/ocupado/} + ${espacio.id}"><button th:text="${espacio.libre ? 'Ocupado' : 'Libre'}"></button></a></td>
 			</tr>
 		</tbody>
 	</table>
+	</div>
 	
 	<footer th:replace="plantilla/template  :: footer"></footer>
 </body>

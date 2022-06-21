@@ -23,11 +23,11 @@ public class Aula {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="id_aula",nullable = false , unique=true)
-	private int id ;
+	private int id;
 	
 	
 	@Column(name="num_aula",nullable = false , unique=true)
-	private int numero ;
+	private int numero;
 	
 	@ManyToOne
 	private Edificio edificio;
@@ -46,6 +46,6 @@ public class Aula {
 		return "Aula [id=" + id + ", numero=" + numero + ", edificio=" + edificio + "]";
 	}
 	
- 	
+
 
 }

@@ -15,10 +15,7 @@ import com.example.entities.Espacio;
 @Repository("espacioRepository")
 public interface IEspacioRepository extends JpaRepository<Espacio,Serializable> {
 	
-	@Query("SELECT e from Espacio e JOIN FETCH e.aula WHERE e.fecha = (:fecha) "
-			+ "AND e.turno = (:turno) AND e.aula = (:aula)")
-	public abstract List<Espacio> findAllByFechaAndTurnoAndAula(@Param("fecha") LocalDate fecha, 
-			@Param("turno") char turno, 
-			@Param("aula") Aula aula);
+	@Query(value = "SELECT * FROM ESPACIO INNER JOIN AULA WHERE ESPACIO.FECHA=:fecha and ESPACIO.TURNO=:turno and AULA.ID=:#{#aula.id}", nativeQuery=true)
+	public abstract Espacio traer(LocalDate fecha, char turno, @Param("aula") Aula aula); 
 
 }
