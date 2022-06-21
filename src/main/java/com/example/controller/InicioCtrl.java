@@ -23,6 +23,9 @@ import com.example.entities.UserRole;
 import com.example.service.implementation.AulaService;
 import com.example.service.implementation.EdificioService;
 import com.example.service.implementation.EspacioService;
+
+import com.example.entities.User;
+import com.example.entities.UserRole;
 import com.example.service.implementation.UserRoleService;
 import com.example.service.implementation.UserService;
 

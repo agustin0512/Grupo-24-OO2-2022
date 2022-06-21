@@ -3,6 +3,7 @@ package com.example.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,6 +34,7 @@ public class PedidoCtrl {
 	
 	
 	/************* AGREGAR PEDIDO *************/
+	@PreAuthorize("hasRole('ROLE_USER')")
 	@GetMapping("/pedidos/agregar")
 	public String agregar(Model model) {
 		List<Materia> materias = materiaService.traer();
@@ -41,7 +43,7 @@ public class PedidoCtrl {
 		model.addAttribute("materias", materias);
 		return "/views/pedidos/agregar";
 	}
-	
+	@PreAuthorize("hasRole('ROLE_USER')")
 	@PostMapping("/pedidos/agregar")
 	public String guardar(@ModelAttribute NotaPedido pedido) {
 		pedidoService.guardar(pedido);
