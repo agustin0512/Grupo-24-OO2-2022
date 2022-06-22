@@ -7,34 +7,41 @@
 
 </head>
 <body>
-<header th:replace="plantilla/template :: header"></header>
+	<header th:replace="plantilla/template :: header"></header>
 
 	<div class=container>
-	
-		<h1 th:text="${titulo}"></h1>
-		
-	</div>
-	<div class="card bg-light">
-<div class="formulario">
-	    <form action="#" th:action="@{/espacios/agregar}" method="post">
-	        <ul class="listaForm">
-	            <li class="fecha">
-	                <label for="fechainicial"><b>Ingrese fecha inicio cuatrimestre:</b></label>
-	                <input class="inputFecha" type="date" name="fechainicio" id="fechainicio">
-	            </li>
-	            <li class="fecha">
-	                <label for="fechafinal"><b>Ingrese fecha fin cuatrimestre:</b></label>
-	                <input class="inputFecha" type="date" name="fechafin" id="fechafin">
-	            </li>
-	            <li class="boton"><input type="submit" class="botonEnviar"></li>
-	        </ul>
-	    </form>
-	    </div>
-    </div>
 
-  
-	
-    <footer th:replace="plantilla/template  :: footer"></footer>
+		<h1 th:text="${titulo}"></h1>
+
+	</div>
+	<div class=container>
+		<div class="card bg-light">
+			<div class="formulario">
+				<form action="#" th:action="@{/espacios/agregar}" method="post">
+
+					<!--  <ul class="listaForm">-->
+					<div class="form-group row">
+						<label class="col-md-3" for="fechainicial">Ingrese fecha
+							inicio cuatrimestre</label> <input type="date" name="fechainicio"
+							id="fechainicio" class="form-control form-control-sm col-md-4">
+						<small></small>
+					</div>
+					<div class="form-group row">
+						<label class="col-md-3" for="fechafinal">Ingrese fecha fin
+							cuatrimestre::</label> <input type="date" name="fechafin" id="fechafin"
+							class="form-control form-control-sm col-md-4"> <small></small>
+					</div>
+					<div>
+						<input type="submit" class="btn btn-primary" value="Enviar" />
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+
+	<footer th:replace="plantilla/template  :: footer"></footer>
 </body>
 
 </html>

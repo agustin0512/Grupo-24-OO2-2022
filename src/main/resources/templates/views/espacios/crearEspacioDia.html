@@ -7,46 +7,52 @@
 
 </head>
 <body>
-<header th:replace="plantilla/template :: header"></header>
+	<header th:replace="plantilla/template :: header"></header>
 
 	<div class=container>
 		<h1 th:text="${titulo}"></h1>
 	</div>
-<div class="formulario">
-	    <form action="#" th:action="@{/espacios/agregarEspacioDia}" th:object=${espacio} method="post">
-	        <ul class="listaForm">
-	            <li class="fecha">
-	                <label for="fecha"><b>Ingrese fecha para la cual quiere reservar el espacio:</b></label>
-	                <input class="inputFecha" type="date" name="fecha" id="fecha">
-	            </li>
-	            
-	           <li class="form-group row">
-				<label class="col-md-2" for="aula" >Aula:</label> 
-				<select th:field="*{aula.id}" class="form-control form-control-sm col-md-6">
-				<option th:each="aula:${aulas}" 
-				th:value="${aula.id}" 
-				th:text="${aula.numero} + ' ' + ${aula.edificio.edificio}"/>
-				</select>
-				<small></small>
-			</li>
-	           
-	           <li class="form-group row">
-				<label class="col-md-2" for="turno" >Turno:</label> 
-				<select th:field="*{turno}" class="form-control form-control-sm col-md-6">
-				<option value="M">Mañana</option>
-				<option value="T">Tarde</option>
-				<option value="N">Noche</option>
-				</select>
-				<small></small>
-			</li>
-	           
-	           
-	            <li class="boton"><input type="submit" class="botonEnviar"></li>
-	        </ul>
-	    </form>
-    </div>
 
- 
-    
-    <footer th:replace="plantilla/template  :: footer"></footer>
+	<div class=container>
+		<div class="formulario">
+			<div class="card bg-light">
+				<form th:action="@{/espacios/agregarEspacioDia}"
+					th:object=${espacio} method="post">
+
+					<div class="form-group row">
+						<label class="col-md-3" for="fecha">Ingrese fecha para el
+							espacio</label> <input type="date" name="fecha" id="fecha"
+							class="form-control form-control-sm col-md-4"> <small></small>
+					</div>
+
+
+					<div class="form-group  row">
+						<label class="col-md-3" for="aula">Aula:</label> <select
+							th:field="*{aula.id}"
+							class="form-control form-control-sm col-md-4">
+							<option th:each="aula:${aulas}" th:value="${aula.id}"
+								th:text="${aula.numero} + ' ' + ${aula.edificio.edificio}" />
+						</select> <small></small>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-md-3" for="turno">Turno:</label> <select
+							th:field="*{turno}" class="form-control form-control-sm col-md-4">
+							<option value="M">Mañana</option>
+							<option value="T">Tarde</option>
+							<option value="N">Noche</option>
+						</select> <small></small>
+					</div>
+
+
+					<div>
+						<input type="submit" class="btn btn-primary" value="Enviar" />
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+	<footer th:replace="plantilla/template  :: footer"></footer>
 </body>

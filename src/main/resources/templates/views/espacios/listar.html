@@ -38,7 +38,8 @@
 				<td th:text="${espacio.libre ? 'Libre' : 'Ocupado'}"></td>
 				<td th:text="${espacio.aula.numero}"></td>
 				<td th:text="${espacio.aula.edificio.edificio}"></td>
-				<td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/espacios/ocupado/} + ${espacio.id}"><button th:text="${espacio.libre ? 'Ocupado' : 'Libre'}"></button></a></td>
+				<td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/espacios/ocupado/} + ${espacio.id}"><button th:text="${espacio.libre ? 'Ocupado' : 'Libre'}" class="btn btn-danger"></button></a></td>
+	
 			</tr>
 		</tbody>
 	</table>

@@ -7,54 +7,66 @@
 
 </head>
 <body>
-<header th:replace="plantilla/template :: header"></header>
+	<header th:replace="plantilla/template :: header"></header>
 
 	<div class=container>
 		<h1 th:text="${titulo}"></h1>
 	</div>
-<div class="formulario">
-	    <form action="#" th:action="@{/espacios/agregarEspacioMes}" th:object=${espacio} method="post">
-	        <ul class="listaForm">
-	            <li class="fecha">
-	                <label for="mes"><b>Ingrese mes:</b></label>
-	                <input type="text" name="mes" id="mes">
-	            </li>
-	            
-	            <li class="fecha">
-	                <label for="anio"><b>Ingrese anio:</b></label>
-	                <input type="text" name="anio" id="anio">
-	            </li>
-	            
-	           <li class="form-group row">
-				<label class="col-md-2" for="aula" >Aula:</label> 
-				<select th:field="*{aula.id}" class="form-control form-control-sm col-md-6">
-				<option th:each="aula:${aulas}" 
-				th:value="${aula.id}" 
-				th:text="${aula.numero} + ' ' + ${aula.edificio.edificio}"/>
-				</select>
-				<small></small>
-			</li>
-			
-	           
-	           <li class="form-group row">
-				<label class="col-md-2" for="turno" >Turno:</label> 
-				<select th:field="*{turno}" class="form-control form-control-sm col-md-6">
-				<option value="M">Mañana</option>
-				<option value="T">Tarde</option>
-				<option value="N">Noche</option>
-				</select>
-				<small></small>
-			</li>
-	           
-	           
-	            <li class="boton"><input type="submit" class="botonEnviar"></li>
-	        </ul>
-	    </form>
-    </div>
+	<div class=container>
+		<div class="formulario">
+			<div class="card bg-light">
+				<form action="#" th:action="@{/espacios/agregarEspacioMes}"
+					th:object=${espacio} method="post">
+					<div class="listaForm">
 
-    <div th:if="${espaciosAgregados}">
-        <p class="textoExito"><b>El espacio fue agregado correctamente</b></p>
-    </div>
-    
-    <footer th:replace="plantilla/template  :: footer"></footer>
+						<div class="form-group row">
+							<label class="col-md-2" for="mes">Ingrese mes:</label> <input
+								type="text" name="mes" id="mes"
+								class="form-control form-control-sm col-md-4"> <small></small>
+						</div>
+
+
+						<div class="form-group row">
+							<label class="col-md-2" for="anio">Ingrese anio</label> <input
+								type="text" name="anio" id="anio"
+								class="form-control form-control-sm col-md-4"> <small></small>
+						</div>
+
+
+						<div class="form-group row">
+							<label class="col-md-2" for="aula">Aula:</label> <select
+								th:field="*{aula.id}"
+								class="form-control form-control-sm col-md-4">
+								<option th:each="aula:${aulas}" th:value="${aula.id}"
+									th:text="${aula.numero} + ' ' + ${aula.edificio.edificio}" />
+							</select> <small></small>
+						</div>
+
+
+						<div class="form-group row">
+							<label class="col-md-2" for="turno">Turno:</label> <select
+								th:field="*{turno}"
+								class="form-control form-control-sm col-md-4">
+								<option value="M">Mañana</option>
+								<option value="T">Tarde</option>
+								<option value="N">Noche</option>
+							</select> <small></small>
+						</div>
+
+
+						<div>
+							<input type="submit" class="btn btn-primary" value="Enviar" />
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div th:if="${espaciosAgregados}">
+		<p class="textoExito">
+			<b>El espacio fue agregado correctamente</b>
+		</p>
+	</div>
+
+	<footer th:replace="plantilla/template  :: footer"></footer>
 </body>
