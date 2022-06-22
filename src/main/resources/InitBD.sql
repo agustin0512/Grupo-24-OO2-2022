@@ -27,4 +27,7 @@ INSERT INTO `bdspring`.`carreras` (`nombre_carrera`, `id_dpto`) VALUES ('Sistema
 INSERT INTO `bdspring`.`materias` (`cod_materia`, `nombre_materia`, `id_carrera`) VALUES ('8016', 'Programacion de Computadoras', '1');
 INSERT INTO `bdspring`.`materias` (`cod_materia`, `nombre_materia`, `id_carrera`) VALUES ('8017', 'Matematicas I', '1');
 
+-- Creacion de datos para edificios
+INSERT INTO `bdspring`.`edificios` values (1,"Jose Hernandez");
+INSERT INTO `bdspring`.`aulas` values (1,1,1);
 /************************ INICIAR PROYECTO JAVA SPRING BOOT (Paso 6) *******************************/
