@@ -26,6 +26,7 @@ public class DemoApplicationTests {
 	public void UsuarioTest() {
 		// Creamos el Roles para el Usuario
 		// Rol User
+	
 		UserRole rolUser = new UserRole(); // Rol Admin
 		UserRole rolAdmin = new UserRole(); // Rol Admin
 		UserRole rolAudit = new UserRole(); // Rol Admin
@@ -48,13 +49,41 @@ public class DemoApplicationTests {
 		user.setCreatedAt(LocalDateTime.now());
 		user.setUpdatedAt(LocalDateTime.now());
 		user.setRol(rolAdmin);
-
 		
+		
+		
+		User user2 = new User();
+		user2.setNombre("Martin");
+		user2.setApellido("Garcia");
+		user2.setMail("prueba2@gmail.com");
+		user2.setTipodoc("DNI");
+		user2.setDni(456789);
+		user2.setUsername("martin");
+		user2.setPassword(encoder.encode("1234"));
+		user2.setEnabled(true);
+		user2.setCreatedAt(LocalDateTime.now());
+		user2.setUpdatedAt(LocalDateTime.now());
+		user2.setRol(rolUser);
+		
+		
+		User user3 = new User();
+		user3.setNombre("Federico");
+		user3.setApellido("Dilorenzo");
+		user3.setMail("prueba3@gmail.com");
+		user3.setTipodoc("DNI");
+		user3.setDni(57589);
+		user3.setUsername("federico");
+		user3.setPassword(encoder.encode("123456"));
+		user3.setEnabled(true);
+		user3.setCreatedAt(LocalDateTime.now());
+		user3.setUpdatedAt(LocalDateTime.now());
+		user3.setRol(rolAudit);
 		
 		
 		// Guardamos User y sus Roles en la BD
-
 		userService.guardar(user);
+		userService.guardar(user2);
+		userService.guardar(user3);
 
 
 	}

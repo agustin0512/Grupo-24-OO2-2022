@@ -4,9 +4,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+
 import org.springframework.stereotype.Service;
 
 import com.example.entities.Aula;
+
 import com.example.repo.IAulaRepository;
 import com.example.service.IAulaService;
 @Service
@@ -16,10 +18,18 @@ public class AulaService implements IAulaService{
 	private IAulaRepository aulaRepository;
 	
 
+	@Override
+	public
+	List<Aula> getAulasByEdificio(int idEdificio){
+		return aulaRepository.getAulasByEdificio(idEdificio);
+	}
+	
+	
+
 	
 	@Override
 	public List<Aula> getAll() {
-		return aulaRepository.findAll();
+		return (List<Aula>)aulaRepository.findAll();
 	}
 
 	

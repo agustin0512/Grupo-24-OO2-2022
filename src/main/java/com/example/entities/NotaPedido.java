@@ -39,6 +39,7 @@ public class NotaPedido {
 	@Column(name="turno" ,length=1, nullable = false)
 	private char  turno;
 	
+	
 	@JoinColumn(name = "aula")
 	private String aula;
 	

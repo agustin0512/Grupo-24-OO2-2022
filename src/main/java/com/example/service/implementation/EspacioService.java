@@ -43,6 +43,7 @@ public class EspacioService implements IEspacioService {
 	public Espacio crear(LocalDate fecha, char turno, Aula aula, boolean libre) throws Exception {
 		if(traer(fecha,turno,aula)!=null) {
 			throw new Exception("El espacio ya existe");
+			
 		}
 		return guardar(new Espacio(fecha,turno,aula, libre));
 	}

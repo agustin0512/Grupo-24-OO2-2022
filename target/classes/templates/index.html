@@ -10,22 +10,21 @@
 </head>
 <body>
 	<header th:replace= "plantilla/template :: header"></header>
-<<<<<<< HEAD
-
+	
+	<a th:href="@{/pedidos/agregar}" sec:authorize="hasRole('ROLE_USER')">
+		<button class="btn btn-info m-1">Solicitar Pedido</button>
+	</a>
+	
 	<a th:href="@{/usuarios/listar}" sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_AUDIT')">
 		<button class="btn btn-info m-1">Lista de Usuarios</button>
 	</a>
-	<a th:href="@{/espacios/listar}">
+	<a th:href="@{/espacios/listar} " sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_AUDIT')">
 		<button class="btn btn-info m-1">Lista de Espacios</button>
 	</a>
-	<a th:href="@{/pedidos/listar}">
+	<a th:href="@{/pedidos/listar}" sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_AUDIT')">
 		<button class="btn btn-info m-1">Lista de Pedidos</button>
 	</a>
-=======
-	<a th:href="@{/usuarios/modificar/}"><button>Modificar</button></a>
-	<a th:href="@{/usuarios/listar}" sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_AUDIT')"><button>Ver Lista de usuarios</button></a>
-	<a th:href="@{/espacios/listar}"> <button>Ver Lista de espacios</button></a>
->>>>>>> 6b54cde4fb173941599a5300d05118cdaa13f6e1
+
 	<footer th:replace= "plantilla/template  :: footer"></footer>
 <body>
 </html>

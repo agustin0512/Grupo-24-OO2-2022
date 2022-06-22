@@ -13,6 +13,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.entities.Materia;
 import com.example.entities.NotaPedido;
+
 import com.example.service.implementation.MateriaService;
 import com.example.service.implementation.PedidoService;
 
@@ -24,6 +25,7 @@ public class PedidoCtrl {
 	
 	@Autowired
 	private MateriaService materiaService;
+	
 	
 	/************* LISTAR PEDIDOS *************/
 	@GetMapping("/pedidos/listar")
@@ -47,9 +49,12 @@ public class PedidoCtrl {
 	@PreAuthorize("hasRole('ROLE_USER')")
 	@PostMapping("/pedidos/agregar")
 	public String guardar(@ModelAttribute NotaPedido pedido, RedirectAttributes redirectAttrs) {
+		
+		
+		
 		pedidoService.guardar(pedido);
 		redirectAttrs.addFlashAttribute("ok", "Pedido creado con exito");
-		return "redirect:/pedidos/listar";
+		return "redirect:/";
 		
 	}
 }

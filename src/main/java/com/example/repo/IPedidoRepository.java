@@ -9,5 +9,7 @@ import com.example.entities.NotaPedido;
 
 @Repository
 public interface IPedidoRepository extends JpaRepository<NotaPedido, Serializable>{
+	
+	
 
 }

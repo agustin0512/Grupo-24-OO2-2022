@@ -28,9 +28,18 @@ public class UserService implements UserDetailsService, IUserService{
 	private IUserRepository repo;
 	@Override
 	@Transactional(readOnly=true)
+	
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		com.example.entities.User user = repo.findByUsernameAndFetchURolEagerly(username);
-		return buildUser(user, buildGrantedAuthorities(user.getRol()));
+	    
+		if(user != null && user.isEnabled()) {//here you can check that
+            
+			return buildUser(user, buildGrantedAuthorities(user.getRol()));
+         } 
+
+         else {
+             throw new UsernameNotFoundException("username not found");
+         }
 	}
 	
 	private User buildUser(com.example.entities.User user, List<GrantedAuthority> grantedAuthorities) {

@@ -51,7 +51,7 @@ public class InicioCtrl {
 		model.addAttribute("usuario", user);// Instanciamos un User para cargar en el Form
 		model.addAttribute("roles", roles);
 		
-		return "/views/usuarios/agregar";
+		return "/views/usuarios/formAgregar";
 		} // Indicamos la plantilla html a usar (Form Agregar)
 
 	

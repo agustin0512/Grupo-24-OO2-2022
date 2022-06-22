@@ -10,8 +10,11 @@
 <header th:replace="plantilla/template :: header"></header>
 
 	<div class=container>
+	
 		<h1 th:text="${titulo}"></h1>
+		
 	</div>
+	<div class="card bg-light">
 <div class="formulario">
 	    <form action="#" th:action="@{/espacios/agregar}" method="post">
 	        <ul class="listaForm">
@@ -26,6 +29,7 @@
 	            <li class="boton"><input type="submit" class="botonEnviar"></li>
 	        </ul>
 	    </form>
+	    </div>
     </div>
 
   

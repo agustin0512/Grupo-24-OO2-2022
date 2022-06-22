@@ -67,7 +67,7 @@ public class EspacioController {
 			espacioService.agregarTodosLosEspacios(fechaInicio, fechaFin);
 			redirectAttrs.addFlashAttribute("ok", "Los espacios fueron agregados");
 		} catch (Exception e) {
-			redirectAttrs.addFlashAttribute("error", "Ya existen espacios dentro del rango de fechas ingresado");
+			redirectAttrs.addFlashAttribute("warning", "Algunos espacios pudieron no haber sido creados, ya que existen en el sistema");
 			e.printStackTrace();
 		}
 		// Redireccion a Inicio
@@ -123,7 +123,7 @@ public class EspacioController {
 			espacioService.agregarEspacioMes(Integer.parseInt(mes), Integer.parseInt(anio), espacio.getTurno(), espacio.getAula());
 			redirectAttrs.addFlashAttribute("ok", "Los espacios fueron agregados");
 		} catch (Exception e) {
-			redirectAttrs.addFlashAttribute("error", "Ya existen espacios dentro del rango de fechas ingresado");
+			redirectAttrs.addFlashAttribute("warning", "Algunos espacios pudieron no haber sido creados, ya que existen en el sistema");
 			e.printStackTrace();
 		}
 		// Redireccion a Inicio

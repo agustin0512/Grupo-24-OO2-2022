@@ -16,5 +16,7 @@ public interface IEspacioRepository extends JpaRepository<Espacio,Serializable> 
 	
 	@Query(value = "SELECT * FROM ESPACIO INNER JOIN AULAS ON ESPACIO.AULA_ID_AULA=AULAS.ID_AULA WHERE ESPACIO.FECHA=:fecha and ESPACIO.TURNO=:turno and AULAS.ID_AULA=:#{#aula.id}", nativeQuery=true)
 	public abstract Espacio traer(LocalDate fecha, char turno, @Param("aula") Aula aula); 
+	
+	
 
 }

@@ -12,19 +12,14 @@
 	<div class=container>
 		<h1 th:text="${titulo}"></h1>
 	</div>
-<<<<<<< Updated upstream
+
 	
 	<div class=container>
 	
 	<a class="btn btn-success btn-sm" sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/usuarios/agregar}" 
 	th:text="'Nuevo usuario'" title="Crear nuevo usuario"></a>
 	<a class="btn btn-info btn-sm" th:href="@{/usuarios/listar?format=pdf}" target=”_blank” th:text="'Descargar PDF'" title="Crear nuevo usuario"></a>
-=======
-	<div>
-	<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/usuarios/agregar}"><button>Agregar Usuario</button></a>
-	<a  th:href="@{/usuarios/listar?format=pdf}" target=”_blank”><button>Descargar PDF</button></a>
-	</div>
->>>>>>> Stashed changes
+
 	<table class="table table-primary table-striped">
 		<thead>
 			<tr>
