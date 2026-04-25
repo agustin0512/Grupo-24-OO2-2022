@@ -9,4 +9,5 @@ public interface IUserService {
 	public boolean remove(int id);
 	public User traer(int id);
 	public void guardar(User user);
+	public long count();	
 }

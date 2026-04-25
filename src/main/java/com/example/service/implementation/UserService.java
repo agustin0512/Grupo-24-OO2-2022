@@ -78,6 +78,8 @@ public class UserService implements UserDetailsService, IUserService{
 			return false;
 		}
 	}
-
+	public long count() {
+		return repo.count();
+	}
 
 }
