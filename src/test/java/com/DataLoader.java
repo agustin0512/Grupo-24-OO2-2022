@@ -1,4 +1,4 @@
-package com;
+package com.example.demo;
 
 import java.time.LocalDateTime;
 
@@ -26,7 +26,6 @@ public class DataLoader implements CommandLineRunner {
    @Override
 public void run(String... args) throws Exception {
 
-    if (userService.count() > 0) return;
 
     UserRole rolAdmin = new UserRole();
     rolAdmin.setRole("ROLE_ADMIN");
@@ -40,6 +39,6 @@ public void run(String... args) throws Exception {
     user.setUpdatedAt(LocalDateTime.now());
     user.setRol(rolAdmin);
 
-    userService.guardar(user); // 👈 CLAVE
+    userService.guardar(user);
 }
 }
