@@ -27,9 +27,9 @@ public class DataLoader implements CommandLineRunner {
 public void run(String... args) throws Exception {
 
 
-    UserRole rolAdmin = new UserRole();
+     UserRole rolAdmin = new UserRole();
     rolAdmin.setRole("ROLE_ADMIN");
-    userRoleService.guardar(rolAdmin);
+    rolAdmin = userRoleService.guardar(rolAdmin); // IMPORTANTE
 
     User user = new User();
     user.setUsername("polo");
@@ -40,5 +40,7 @@ public void run(String... args) throws Exception {
     user.setRol(rolAdmin);
 
     userService.guardar(user);
+
+    System.out.println(">>> DATA LOADED <<<");
 }
 }

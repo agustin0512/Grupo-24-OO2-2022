@@ -30,15 +30,14 @@ public class UserRoleService implements IUserRoleService{
 
 	@Override
 	@Transactional
-	public void guardar(UserRole userRole) {
-		repo.save(userRole);
+	public UserRole guardar(UserRole userRole) {
+		return repo.save(userRole);
 		
 	}
 
 	@Override
 	public UserRole traer(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return repo.findById(id).orElse(null);
 	}
 
 }
