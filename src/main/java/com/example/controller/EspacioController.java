@@ -45,7 +45,7 @@ public class EspacioController {
 	
 		// Mediante el metodo addAtribute de Model, enviamos los valores a compartir con la vista
 		model.addAttribute("espacios", espacios);
-		return "/views/espacios/listar"; // Indicamos la plantilla html a usar(index)
+		return "views/espacios/listar"; // Indicamos la plantilla html a usar(index)
 	}
 	
 	/************* CREAR ESPACIOS *************/
@@ -53,7 +53,7 @@ public class EspacioController {
 	@GetMapping("/espacios/agregar")
 	public String crear(Model model) {
 		model.addAttribute("espacio", new Espacio());	// Instanciamos un Espacio para cargar en el Form
-		return "/views/espacios/crear"; // Indicamos la plantilla html a usar (Form Agregar)
+		return "views/espacios/crear"; // Indicamos la plantilla html a usar (Form Agregar)
 	}
 
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
@@ -83,7 +83,7 @@ public class EspacioController {
 		model.addAttribute("espacio", new Espacio());	// Instanciamos un Espacio para cargar en el Form
 		model.addAttribute("edificios", edificios);
 		model.addAttribute("aulas", aulas);
-		return "/views/espacios/crearEspacioDia"; // Indicamos la plantilla html a usar (Form Agregar)
+		return "views/espacios/crearEspacioDia"; // Indicamos la plantilla html a usar (Form Agregar)
 	}
 
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
@@ -109,7 +109,7 @@ public class EspacioController {
 		model.addAttribute("espacio", new Espacio());	// Instanciamos un Espacio para cargar en el Form
 		model.addAttribute("edificios", edificios);
 		model.addAttribute("aulas", aulas);
-		return "/views/espacios/crearEspacioMes"; // Indicamos la plantilla html a usar (Form Agregar)
+		return "views/espacios/crearEspacioMes"; // Indicamos la plantilla html a usar (Form Agregar)
 	}
 
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
