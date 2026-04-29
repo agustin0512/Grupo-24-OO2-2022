@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.configuration;
 
 import java.time.LocalDateTime;
 
@@ -41,6 +41,8 @@ public void run(String... args) throws Exception {
     user.setUsername("polo");
     user.setPassword(encoder.encode("9999"));
     user.setEnabled(true);
+    user.setCreatedAt(LocalDateTime.now());
+    user.setUpdatedAt(LocalDateTime.now());
     user.setRol(rolAdmin);
 
     userService.guardar(user);
