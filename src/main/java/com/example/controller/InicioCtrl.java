@@ -37,7 +37,7 @@ public class InicioCtrl {
 
 		// Mediante el metodo addAtribute de Model, enviamos los valores a compartir con la vista
 		model.addAttribute("usuarios", usuarios);
-		return "views/usuarios/listar"; // Indicamos la plantilla html a usar(index)
+		return "/views/usuarios/listar"; // Indicamos la plantilla html a usar(index)
 	}
 	
 	/************* AGREGAR USUARIO *************/
@@ -51,7 +51,7 @@ public class InicioCtrl {
 		model.addAttribute("usuario", user);// Instanciamos un User para cargar en el Form
 		model.addAttribute("roles", roles);
 		
-		return "views/usuarios/formAgregar";
+		return "/views/usuarios/formAgregar";
 		} // Indicamos la plantilla html a usar (Form Agregar)
 
 	

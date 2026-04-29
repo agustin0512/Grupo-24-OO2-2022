@@ -32,7 +32,7 @@ public class PedidoCtrl {
 	public String listar(Model model) {
 		List<NotaPedido> pedidos = pedidoService.traer();
 		model.addAttribute("pedidos", pedidos);
-		return "views/pedidos/listar";
+		return "/views/pedidos/listar";
 	}
 	
 	
@@ -44,7 +44,7 @@ public class PedidoCtrl {
 		NotaPedido pedido= new NotaPedido();
 		model.addAttribute("pedido", pedido);
 		model.addAttribute("materias", materias);
-		return "views/pedidos/agregar";
+		return "/views/pedidos/agregar";
 	}
 	@PreAuthorize("hasRole('ROLE_USER')")
 	@PostMapping("/pedidos/agregar")
