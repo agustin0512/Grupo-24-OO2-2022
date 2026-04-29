@@ -27,20 +27,24 @@ public class DataLoader implements CommandLineRunner {
 public void run(String... args) throws Exception {
 
 
-     UserRole rolAdmin = new UserRole();
+ UserRole rolAdmin = new UserRole();
     rolAdmin.setRole("ROLE_ADMIN");
-    rolAdmin = userRoleService.guardar(rolAdmin); // IMPORTANTE
+    rolAdmin = userRoleService.guardar(rolAdmin);
 
     User user = new User();
+    user.setNombre("Juan");
+    user.setApellido("Perez");
+    user.setMail("test@gmail.com");
+    user.setTipodoc("DNI");
+    user.setDni(12345678);
+
     user.setUsername("polo");
     user.setPassword(encoder.encode("9999"));
     user.setEnabled(true);
-    user.setCreatedAt(LocalDateTime.now());
-    user.setUpdatedAt(LocalDateTime.now());
     user.setRol(rolAdmin);
 
     userService.guardar(user);
 
-    System.out.println(">>> DATA LOADED <<<");
+    System.out.println(">>> USER CREATED <<<");
 }
 }
