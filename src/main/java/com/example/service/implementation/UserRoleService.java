@@ -40,4 +40,10 @@ public class UserRoleService implements IUserRoleService{
 		return repo.findById(id).orElse(null);
 	}
 
+	@Override
+	@Transactional(readOnly = true)
+	public UserRole findByRole(String role) {
+		return repo.findByRole(role);
+	}
+
 }

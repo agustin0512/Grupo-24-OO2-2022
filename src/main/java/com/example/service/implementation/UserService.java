@@ -81,5 +81,9 @@ public class UserService implements UserDetailsService, IUserService{
 	public long count() {
 		return repo.count();
 	}
-
+@Override
+@Transactional(readOnly = true)
+public User findByUsername(String username) {
+    return repo.findByUsername(username);
+}
 }

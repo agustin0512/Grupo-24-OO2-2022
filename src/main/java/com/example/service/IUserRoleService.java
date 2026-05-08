@@ -9,4 +9,6 @@ public interface IUserRoleService {
 	public UserRole traer(Long id);
 	public UserRole guardar(UserRole userRole);
 	UserRole traer(int id);
+	UserRole findByRole(String role);	
+
 }

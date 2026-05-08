@@ -7,7 +7,8 @@ import org.springframework.stereotype.Repository;
 
 import com.example.entities.UserRole;
 
-@Repository
+@Repository("userRoleRepository")
 public interface IUserRoleRepository extends JpaRepository<UserRole, Serializable>{
 
+    UserRole findByRole(String role);
 }
