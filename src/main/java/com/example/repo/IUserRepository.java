@@ -17,7 +17,7 @@ import com.example.entities.User;
 
 @Repository("userRepository")
 public interface IUserRepository extends JpaRepository<User, Serializable>{//JpaRepository<tabla, clave primaria>
-	org.springframework.security.core.userdetails.User findByUsername(String username);
+	User findByUsername(String username);
 
 	@Query("SELECT u FROM User u JOIN FETCH u.rol WHERE u.username = (:username)")
 	public abstract User findByUsernameAndFetchURolEagerly(@Param("username") String username);
