@@ -1,0 +1,9 @@
+{"properties": [{
+  "name": "ADMIN_PASSWORD",
+  "type": "java.lang.String",
+  "description": "A description for 'ADMIN_PASSWORD'"
+}]}{"properties": [{
+  "name": "ADMIN_USER",
+  "type": "java.lang.String",
+  "description": "A description for 'ADMIN_USER'"
+}]}
