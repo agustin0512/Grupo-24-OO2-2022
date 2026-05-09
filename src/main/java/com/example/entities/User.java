@@ -59,8 +59,8 @@ public class User {
 	private LocalDateTime updatedAt;
 	
 	
-	@ManyToOne
-	@JoinColumn(name="id_rol")
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "id_rol")
 	private UserRole rol;
 	
 	

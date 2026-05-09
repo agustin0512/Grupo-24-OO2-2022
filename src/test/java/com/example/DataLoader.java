@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.entities.User;
 import com.example.entities.UserRole;
@@ -29,7 +30,8 @@ public class DataLoader implements CommandLineRunner {
 
     private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-   @Override
+    @Override
+    @Transactional
 public void run(String... args) throws Exception {
 try {
 
