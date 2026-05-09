@@ -27,13 +27,13 @@ public class SecurityConfig {
 
         http
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers(
-                    "/css/**",
-                    "/js/**",
-                    "/images/**",
-                    "/vendor/**"
-                ).permitAll()
-                .anyRequest().authenticated()
+                .antMatchers(
+				"/css/**",
+				"/js/**",
+				"/images/**",
+				"/vendor/**"
+			).permitAll()
+			.anyRequest().authenticated()
             )
             .formLogin(form -> form
                 .loginPage("/login")
