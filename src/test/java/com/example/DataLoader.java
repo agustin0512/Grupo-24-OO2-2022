@@ -14,7 +14,7 @@ import com.example.service.implementation.UserService;
 
 @Component
 public class DataLoader implements CommandLineRunner {
-    System.out.println("🔥 DATA LOADER EJECUTANDOSE 🔥");
+    
     @Autowired
     private UserService userService;
 
@@ -31,35 +31,41 @@ public class DataLoader implements CommandLineRunner {
 
    @Override
 public void run(String... args) throws Exception {
+try {
 
-UserRole rolAdmin = userRoleService.findByRole("ROLE_ADMIN");
+            UserRole rolAdmin = userRoleService.findByRole("ROLE_ADMIN");
 
-if(rolAdmin == null){
-    rolAdmin = new UserRole();
-    rolAdmin.setRole("ROLE_ADMIN");
-    rolAdmin = userRoleService.guardar(rolAdmin);
-}
+            if (rolAdmin == null) {
+                rolAdmin = new UserRole();
+                rolAdmin.setRole("ROLE_ADMIN");
+                rolAdmin = userRoleService.guardar(rolAdmin);
+            }
 
-if(userService.findByUsername(adminUser) == null) {
+            if (userService.findByUsername(adminUser) == null) {
 
-    User user = new User();
+                User user = new User();
 
-    user.setNombre("Juan");
-    user.setApellido("Perez");
-    user.setMail("test@gmail.com");
-    user.setTipodoc("DNI");
-    user.setDni(12345678);
+                user.setNombre("Juan");
+                user.setApellido("Perez");
+                user.setMail("test@gmail.com");
+                user.setTipodoc("DNI");
+                user.setDni(12345678);
 
-    user.setUsername(adminUser);
-    user.setPassword(encoder.encode(adminPassword));
-    user.setEnabled(true);
-    user.setCreatedAt(LocalDateTime.now());
-    user.setUpdatedAt(LocalDateTime.now());
-    user.setRol(rolAdmin);
+                user.setUsername(adminUser);
+                user.setPassword(encoder.encode(adminPassword));
+                user.setEnabled(true);
+                user.setCreatedAt(LocalDateTime.now());
+                user.setUpdatedAt(LocalDateTime.now());
+                user.setRol(rolAdmin);
 
-    userService.guardar(user);
+                userService.guardar(user);
 
-    System.out.println(">>> USER CREATED <<<");
-}
+                System.out.println(">>> USER CREATED <<<");
+            }
+
+        } catch (Exception e) {
+            System.out.println("❌ ERROR DATA LOADER: " + e.getMessage());
+            e.printStackTrace();
+        }
 }
 }
