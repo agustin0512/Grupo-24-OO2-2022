@@ -14,7 +14,7 @@ import com.example.service.implementation.UserService;
 
 @Component
 public class DataLoader implements CommandLineRunner {
-
+    System.out.println("🔥 DATA LOADER EJECUTANDOSE 🔥");
     @Autowired
     private UserService userService;
 
