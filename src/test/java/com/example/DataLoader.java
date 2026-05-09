@@ -1,12 +1,11 @@
 package com.example;
 
 import java.time.LocalDateTime;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.beans.factory.annotation.Value;
 
 import com.example.entities.User;
 import com.example.entities.UserRole;
@@ -15,25 +14,31 @@ import com.example.service.implementation.UserService;
 
 @Component
 public class DataLoader implements CommandLineRunner {
-    
-    @Autowired
-    private UserService userService;
 
-     @Value("${ADMIN_USER}")
+    private final UserService userService;
+    private final UserRoleService userRoleService;
+    private final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
+    @Value("${ADMIN_USER:admin}")
     private String adminUser;
 
-    @Value("${ADMIN_PASSWORD}")
+    @Value("${ADMIN_PASSWORD:admin123}")
     private String adminPassword;
 
-    @Autowired
-    private UserRoleService userRoleService;
-
-    private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+    public DataLoader(UserService userService, UserRoleService userRoleService) {
+        this.userService = userService;
+        this.userRoleService = userRoleService;
+    }
 
     @Override
-    @Transactional
-public void run(String... args) throws Exception {
-try {
+    public void run(String... args) {
+
+        try {
+            System.out.println("🔥 DATA LOADER STARTED 🔥");
+
+            if (adminUser == null || adminPassword == null) {
+                System.out.println("⚠ ADMIN vars not set, using defaults");
+            }
 
             UserRole rolAdmin = userRoleService.findByRole("ROLE_ADMIN");
 
@@ -43,15 +48,16 @@ try {
                 rolAdmin = userRoleService.guardar(rolAdmin);
             }
 
-            if (userService.findByUsername(adminUser) == null) {
+            User existing = userService.findByUsername(adminUser);
+
+            if (existing == null) {
 
                 User user = new User();
-
-                user.setNombre("Juan");
-                user.setApellido("Perez");
-                user.setMail("test@gmail.com");
+                user.setNombre("Admin");
+                user.setApellido("System");
+                user.setMail("admin@system.com");
                 user.setTipodoc("DNI");
-                user.setDni(12345678);
+                user.setDni(99999999);
 
                 user.setUsername(adminUser);
                 user.setPassword(encoder.encode(adminPassword));
@@ -62,12 +68,14 @@ try {
 
                 userService.guardar(user);
 
-                System.out.println(">>> USER CREATED <<<");
+                System.out.println("✅ ADMIN USER CREATED");
+            } else {
+                System.out.println("ℹ ADMIN USER ALREADY EXISTS");
             }
 
         } catch (Exception e) {
-            System.out.println("❌ ERROR DATA LOADER: " + e.getMessage());
+            System.out.println("❌ DATA LOADER ERROR: " + e.getMessage());
             e.printStackTrace();
         }
-}
+    }
 }
