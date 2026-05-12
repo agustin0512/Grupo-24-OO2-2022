@@ -22,32 +22,30 @@ public class SecurityConfig {
         this.userService = userService;
     }
 
-    @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+   @Bean
+public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
-        http
-            .authorizeHttpRequests(auth -> auth
-                .antMatchers(
-				"/css/**",
-				"/js/**",
-				"/images/**",
-				"/vendor/**"
-			).permitAll()
-			.anyRequest().authenticated()
-            )
-            .formLogin(form -> form
-                .loginPage("/login")
-                .loginProcessingUrl("/loginprocess")
-                .defaultSuccessUrl("/loginsuccess", true)
-                .permitAll()
-            )
-            .logout(logout -> logout
-                .logoutUrl("/logout")
-                .logoutSuccessUrl("/login")
-            );
+    http
+        .authorizeRequests()
+            .antMatchers(
+                "/login",
+                "/css/**",
+                "/js/**",
+                "/images/**",
+                "/vendor/**"
+            ).permitAll()
+            .anyRequest().authenticated()
+        .and()
+        .formLogin()
+            .loginPage("/login")
+            .defaultSuccessUrl("/")
+            .permitAll()
+        .and()
+        .logout()
+            .permitAll();
 
-        return http.build();
-    }
+    return http.build();
+}
 
     @Bean
     public PasswordEncoder passwordEncoder() {
