@@ -20,10 +20,10 @@ public class DataLoader implements CommandLineRunner {
     private final UserRoleService userRoleService;
     private final PasswordEncoder encoder;
 
-    @Value("${ADMIN_USER:admin}")
+    @Value("${ADMIN_USER}")
     private String adminUser;
 
-    @Value("${ADMIN_PASSWORD:admin123}")
+    @Value("${ADMIN_PASSWORD}")
     private String adminPassword;
 
   public DataLoader(UserService userService,
