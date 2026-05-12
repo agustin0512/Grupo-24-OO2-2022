@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.beans.factory.annotation.Value;
 
@@ -17,7 +18,7 @@ public class DataLoader implements CommandLineRunner {
 
     private final UserService userService;
     private final UserRoleService userRoleService;
-    private final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+    private final PasswordEncoder encoder;
 
     @Value("${ADMIN_USER:admin}")
     private String adminUser;
@@ -25,10 +26,13 @@ public class DataLoader implements CommandLineRunner {
     @Value("${ADMIN_PASSWORD:admin123}")
     private String adminPassword;
 
-    public DataLoader(UserService userService, UserRoleService userRoleService) {
-        this.userService = userService;
-        this.userRoleService = userRoleService;
-    }
+  public DataLoader(UserService userService,
+                  UserRoleService userRoleService,
+                  PasswordEncoder encoder) {
+    this.userService = userService;
+    this.userRoleService = userRoleService;
+    this.encoder = encoder;
+}
 
     @Override
     public void run(String... args) {
